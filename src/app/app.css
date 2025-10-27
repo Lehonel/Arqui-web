@@ -1,0 +1,103 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  background-color: white;
+  color: black;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-logo a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.logo-img {
+  width: 45px;
+  height: 45px;
+  margin-right: 10px;
+  border-radius: 8px;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.navbar-links a {
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.navbar-links a:hover {
+  color: #00c6ff;
+}
+
+.btn-unete {
+  background-color: #00c6ff;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-unete:hover {
+  background-color: #009edc;
+}
+
+/* --- HAMBURGUESA --- */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 4px;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .navbar-links {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #1f1f1f;
+    width: 70%;
+    display: flex;
+    padding: 15px;
+  }
+
+  .navbar-links.active {
+    display: flex;
+  }
+
+  .navbar-links a{
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+  }
+  .btn-unete {
+    text-align: center;
+    padding: 10px 0;
+  }
+}

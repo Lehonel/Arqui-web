@@ -1,0 +1,135 @@
+
+.registro-bg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #4b6cb7, #182848);
+  font-family: "Poppins", sans-serif;
+}
+
+
+.registro-container {
+  background-color: #ffffff;
+  padding: 40px 50px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  width: 400px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+
+.registro-container h2 {
+  color: #182848;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.highlights {
+  color: #4b6cb7;
+}
+
+.registro-container p {
+  color: #555;
+  margin-bottom: 15px;
+  font-size: 15px;
+}
+
+
+.campo {
+  margin-bottom: 10px;
+  margin-right: 20px;
+  text-align: left;
+}
+
+.campo label {
+  display: block;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.campo input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.campo input:focus {
+  border-color: #4b6cb7;
+  box-shadow: 0 0 6px rgba(75, 108, 183, 0.4);
+}
+
+
+.roles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.roles label {
+  font-size: 15px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+}
+
+
+.btn-registrar {
+  background: linear-gradient(to right, #7a7cff, #000);
+  color: #fff;
+  border: none;
+  padding: 10px ;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 50%;
+}
+
+.btn-registrar:hover {
+  background-color: #35569d;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .registro-container {
+    width: 85%;
+    padding: 30px 25px;
+  }
+
+  .roles {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .registro-bg {
+    align-items: flex-start;
+    padding-top: 40px;
+  }
+
+  .registro-container {
+    width: 90%;
+    padding: 25px 20px;
+  }
+
+  .btn-registrar {
+    font-size: 15px;
+    padding: 10px;
+  }
+
+  .campo input {
+    font-size: 13px;
+    padding: 8px;
+  }
+}

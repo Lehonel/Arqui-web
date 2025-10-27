@@ -1,0 +1,87 @@
+
+
+.recuperar-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align:center;
+  gap: 3rem;
+  height: 100vh;
+  background: linear-gradient(180deg, #1e2a47, #1f4b88);
+  font-family: 'Poppins', sans-serif;
+
+}
+
+.highlight {
+  color: #7a7cff;
+}
+.recuperar-right{
+  background: #fff;
+  border-radius: 16px;
+  color: black;
+  padding: 2.5rem;
+
+}
+
+label{
+  display: block;
+  text-align: left;
+  margin-top: 2.1rem;
+}
+
+input{
+  display: block;
+  text-align: left;
+  width: 100%;
+  margin-top: 0.2rem;
+  border-radius: 12px;
+  border: black 2px solid;
+  padding: 0.5rem;
+}
+
+.link{
+  color:#7a7cff;
+}
+
+button{
+  margin-top: 1rem;
+  padding: 0.5rem 5rem;
+  align-content: center;
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(to right, #7a7cff, #000);
+  color: #fff;
+  transition: 1s ease-out;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.recuperar-left{
+  color: black;
+}
+
+.recuperar-left h1{
+  font-size: 3.2rem;
+}
+
+.recuperar-left p{
+  font-size: 1.5rem;
+  text-align: center;
+  color: white;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .recuperar-left{
+    display: none;
+  }
+  .recuperar-right{
+    display: block;
+  }
+}
+
+
+
+

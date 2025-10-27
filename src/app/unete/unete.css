@@ -1,0 +1,145 @@
+app-navbar {
+  display: none !important;
+}
+
+.unete-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  height: 100vh;
+  background: linear-gradient(180deg, #1e2a47, #1f4b88);
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.unete-left {
+  flex: 0.5;
+  text-align: center;
+}
+
+.logo {
+  font-size: 5rem;
+  font-weight: 700;
+}
+
+.skill {
+  color: #1c1c1c;
+
+}
+
+.link {
+  color: #7a7cff;
+
+}
+
+.slogan {
+  margin-top: 1rem;
+  font-size: 2rem;
+  font-weight: 400;
+  color: #d8d8d8;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.unete-right {
+  background-color: #fff;
+  color: #000;
+  padding: 2rem;
+  border-radius: 20px;
+  width: 360px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+}
+
+.unete-right h2 {
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.highlight {
+  color: #7a7cff;
+}
+
+.unete-right p {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #555;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 0.9rem;
+}
+
+input {
+  width: 100%;
+  padding: 0.6rem;
+  margin-bottom: 1.2rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.forgot-password {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  margin-bottom: 0.3rem;
+}
+
+.forgot-password a {
+
+  text-decoration:none ;
+  color: #7a7cff;
+}
+
+button {
+  width: 100%;
+  padding: 0.8rem;
+  background: linear-gradient(to right, #7a7cff, #000);
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.register-text {
+  margin-top: 1.2rem;
+  font-size: 0.9rem;
+  text-align: center;
+  text-decoration: none;
+}
+
+.registrar-text {
+  color: #7a7cff;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .unete-container {
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .unete-left {
+    display: none;
+  }
+
+  .unete-right {
+    width: 90%;
+    max-width: 400px;
+  }
+}

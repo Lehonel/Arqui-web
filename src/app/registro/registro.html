@@ -1,0 +1,45 @@
+<div class="registro-bg">
+  <div class="registro-container">
+    <h2>CREAR <span class="highlights">CUENTA</span></h2>
+    <p>Completa el formulario para registrarte</p>
+
+    <form [formGroup]="registroForm" (ngSubmit)="registrar()">
+      <div class="roles">
+        <h3>Tipo de Usuario:</h3>
+        <label>
+          <input type="radio" formControlName="rol" value="usuario" (change)="onRolChange('usuario')"> Usuario
+        </label>
+        <label>
+          <input type="radio" formControlName="rol" value="asesor" (change)="onRolChange('asesor')"> Asesor
+        </label>
+      </div>
+
+      <div class="campo">
+        <label>Nombre</label>
+        <input type="text" formControlName="nombre" placeholder="Nombre completo">
+      </div>
+
+      <div class="campo">
+        <label>Correo</label>
+        <input type="email" formControlName="correo" placeholder="ejemplo@gmail.com">
+      </div>
+
+      <div class="campo">
+        <label>Teléfono</label>
+        <input type="text" formControlName="telefono" placeholder="+51 999999999">
+      </div>
+
+      <div class="campo">
+        <label>Dirección</label>
+        <input type="text" formControlName="direccion" placeholder="Dirección">
+      </div>
+
+      <div class="campo" *ngIf="rolSeleccionado === 'asesor'">
+        <label>Especialidad</label>
+        <input type="text" formControlName="especialidad" placeholder="Área de especialidad">
+      </div>
+
+      <button type="submit" class="btn-registrar">Registrar</button>
+    </form>
+  </div>
+</div>
