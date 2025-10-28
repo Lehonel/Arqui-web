@@ -1,103 +1,112 @@
 .navbar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 10px 30px;
-  background-color: white;
-  color: black;
+  justify-content: space-between;
+  background-color: #ffffff;
+  padding: 10px 40px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
-.navbar-logo a {
+.logo-container {
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: white;
-  font-size: 1.4rem;
-  font-weight: 600;
+  color: #1b2b50;
 }
 
 .logo-img {
   width: 45px;
   height: 45px;
-  margin-right: 10px;
-  border-radius: 8px;
+  margin-right: 8px;
+}
+
+.logo-text {
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .navbar-links {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 40px;
 }
 
 .navbar-links a {
-  color: white;
   text-decoration: none;
-  transition: 0.3s;
+  color: #000;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
 
 .navbar-links a:hover {
-  color: #00c6ff;
+  color: #1b2b50;
 }
 
 .btn-unete {
-  background-color: #00c6ff;
-  color: white;
+  background-color: #1b2b50;
+  color: #ffffff;
   border: none;
-  padding: 8px 15px;
-  border-radius: 6px;
+  padding: 10px 28px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: 0.3s;
+  font-weight: 700;
+  font-size: 15px;
+  transition: background-color 0.3s ease;
 }
 
 .btn-unete:hover {
-  background-color: #009edc;
+  background-color: #243864;
 }
 
-/* --- HAMBURGUESA --- */
 .menu-toggle {
   display: none;
   flex-direction: column;
   cursor: pointer;
-  gap: 4px;
 }
 
 .bar {
   width: 25px;
   height: 3px;
-  background-color: white;
-  border-radius: 5px;
+  background-color: #333;
+  margin: 4px 0;
 }
 
-/* --- RESPONSIVE --- */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: flex;
+/* --- Responsivo --- */
+@media (max-width: 900px) {
+  .navbar {
+    padding: 15px 25px;
   }
 
   .navbar-links {
+    display: none;
+    flex-direction: column;
     position: absolute;
-    top: 60px;
-    right: 0;
-    background-color: #1f1f1f;
-    width: 70%;
-    display: flex;
-    padding: 15px;
+    top: 65px;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    padding: 15px 0;
+    border-top: 1px solid #ddd;
   }
 
   .navbar-links.active {
     display: flex;
   }
 
-  .navbar-links a{
-    text-align: center;
-    padding: 10px 0;
+  .navbar-links a {
+    padding: 10px;
     width: 100%;
-  }
-  .btn-unete {
     text-align: center;
-    padding: 10px 0;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .btn-unete {
+    display: none;
   }
 }

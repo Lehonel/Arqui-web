@@ -1,0 +1,124 @@
+/* Hero (frase principal) */
+.hero {
+  background: linear-gradient(135deg, #142850, #1b2b50);
+  color: #ffffff;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.hero h2 {
+  font-weight: 400;
+  font-size: 26px;
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* Misión y Visión */
+.mision-vision {
+  background-color: #f5f9ff;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 80px;
+  padding: 60px 100px;
+  flex-wrap: wrap;
+}
+
+.mision,
+.vision {
+  max-width: 500px;
+  text-align: justify;
+}
+
+.mision h3,
+.vision h3 {
+  text-align: center;
+  color: #1b2b50;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.mision p,
+.vision p {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Equipo */
+.equipo {
+  background-color: #fff;
+  text-align: center;
+  padding: 70px 30px;
+}
+
+.equipo h3 {
+  color: #1b2b50;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 50px;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.card {
+  background: #f9fbff;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  width: 220px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.card img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.card h4 {
+  color: #1b2b50;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.card p {
+  color: #555;
+  font-size: 14px;
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+  .mision-vision {
+    flex-direction: column;
+    text-align: center;
+    padding: 50px 30px;
+  }
+
+  .mision,
+  .vision {
+    max-width: 100%;
+  }
+
+  .hero h2 {
+    font-size: 20px;
+  }
+
+  .cards {
+    gap: 25px;
+  }
+}

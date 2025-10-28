@@ -15,7 +15,7 @@ import { NgIf, NgOptimizedImage } from '@angular/common';
 })
 export class App {
   mostrarNavbar = true;
-  menuAbierto = false; // 👈 Nuevo estado del menú hamburguesa
+  menuAbierto = false;
 
   constructor(private router: Router) {
     this.router.events
@@ -30,7 +30,7 @@ export class App {
           this.mostrarNavbar = true;
         }
 
-        // 👇 Cierra el menú hamburguesa cuando se cambia de ruta
+
         this.menuAbierto = false;
       });
   }

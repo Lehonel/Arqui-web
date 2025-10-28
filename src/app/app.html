@@ -1,15 +1,22 @@
 <nav *ngIf="mostrarNavbar" class="navbar">
-  <div class="navbar-logo">
-    <a [routerLink]="'/'">
-      <img src="assets/img/resize.webp" alt="SkillLink Logo" class="logo-img" />
+  <div class="navbar-left">
+    <a [routerLink]="'/'" class="logo-container">
+
+      <span class="logo-text">
+        <strong>SKILL</strong> LINK
+      </span>
     </a>
-    <div class="navbar-links" [class.active]="menuAbierto">
-      <a [routerLink]="'/expertos'" (click)="cerrarMenu()">Expertos</a>
-      <a [routerLink]="'/asesorias'" (click)="cerrarMenu()">Asesorías</a>
-      <a [routerLink]="'/nosotros'" (click)="cerrarMenu()">Nosotros</a>
-      <a [routerLink]="'/soporte'" (click)="cerrarMenu()">Soporte Técnico</a>
-      <button class="btn-unete" [routerLink]="'/unete'" (click)="cerrarMenu()">Únete</button>
-    </div>
+  </div>
+
+  <div class="navbar-links" [class.active]="menuAbierto">
+    <a [routerLink]="'/expertos'" (click)="cerrarMenu()">Expertos</a>
+    <a [routerLink]="'/asesorias'" (click)="cerrarMenu()">Asesorías</a>
+    <a [routerLink]="'/nosotros'" (click)="cerrarMenu()">Nosotros</a>
+    <a [routerLink]="'/soporte'" (click)="cerrarMenu()">Soporte Técnico</a>
+  </div>
+
+  <div class="navbar-right">
+    <button class="btn-unete" [routerLink]="'/unete'" (click)="cerrarMenu()">ÚNETE</button>
   </div>
 
   <!-- Botón hamburguesa -->
@@ -18,10 +25,6 @@
     <span class="bar"></span>
     <span class="bar"></span>
   </div>
-
-  <!-- Enlaces -->
-
 </nav>
 
 <router-outlet></router-outlet>
-
