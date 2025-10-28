@@ -28,3 +28,23 @@
 </nav>
 
 <router-outlet></router-outlet>
+<footer *ngIf="mostrarFooter" class="footer-skilllink">
+  <div class="footer-content">
+    <nav class="footer-nav">
+      <a [routerLink]="'/'">Inicio</a>
+      <a [routerLink]="'/expertos'">Expertos</a>
+      <a [routerLink]="'/asesorias'">Asesorías</a>
+      <a [routerLink]="'/nosotros'">Sobre Nosotros</a>
+      <a [routerLink]="'/soporte'">Soporte Técnico</a>
+    </nav>
+    <div class="icons">
+      <a href="#"><ion-icon name="logo-facebook" class="icon"></ion-icon></a>
+      <a href="#"><ion-icon name="logo-google" class="icon"></ion-icon></a>
+      <a href="#"><ion-icon name="logo-twitter" class="icon"></ion-icon></a>
+      <a href="#"><ion-icon name="logo-linkedin" class="icon"></ion-icon></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2025 SkillLink. Todos los derechos reservados.
+  </div>
+</footer>

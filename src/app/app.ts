@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Router, NavigationEnd, RouterLink, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { NgIf, NgOptimizedImage } from '@angular/common';
@@ -6,15 +6,13 @@ import { NgIf, NgOptimizedImage } from '@angular/common';
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
-  imports: [
-    NgIf,
-    RouterLink,
-    RouterOutlet
-  ],
-  styleUrls: ['./app.css']
+  styleUrls: ['./app.css'],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  imports: [NgIf, RouterLink, RouterOutlet]
 })
 export class App {
   mostrarNavbar = true;
+  mostrarFooter = true; // <-- nueva variable
   menuAbierto = false;
 
   constructor(private router: Router) {
@@ -24,22 +22,30 @@ export class App {
         const rutaActual = event.urlAfterRedirects;
         console.log('Ruta actual:', rutaActual);
 
+        // Navbar
         if (rutaActual === '/unete' || rutaActual === '/registro' || rutaActual === '/recuperar') {
           this.mostrarNavbar = false;
         } else {
           this.mostrarNavbar = true;
         }
 
+        // Footer
+        if (rutaActual === '/unete' || rutaActual === '/registro' || rutaActual === '/recuperar') {
+          this.mostrarFooter = false;
+        } else {
+          this.mostrarFooter = true;
+        }
 
         this.menuAbierto = false;
       });
   }
 
-
   toggleMenu() {
     this.menuAbierto = !this.menuAbierto;
   }
-  cerrarMenu() {
 
+  cerrarMenu() {
+    this.menuAbierto = false;
   }
+
 }
