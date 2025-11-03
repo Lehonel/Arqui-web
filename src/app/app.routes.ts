@@ -7,6 +7,8 @@ import {Asesorias} from './asesorias/asesorias';
 import {Unete} from './unete/unete';
 import {Registro} from './registro/registro';
 import {Recuperar} from './recuperar/recuperar';
+import { Homeusuario } from './usuario/homeusuario/homeusuario';
+import {Homeasesor} from './asesor/homeasesor/homeasesor';
 
 export const routes: Routes = [
   {path: '', component: Home},
@@ -17,5 +19,7 @@ export const routes: Routes = [
   {path: 'unete', component: Unete},
   {path: 'registro', component: Registro},
   {path: 'recuperar', component: Recuperar},
+  { path: 'usuario/homeusuario', component: Homeusuario },
+  { path: 'asesor/homeasesor', component: Homeasesor },
 
 ];

@@ -9,5 +9,12 @@ import { routes } from './app/app.routes';
 bootstrapApplication(App, {
   providers: [provideRouter(routes)]
 }).catch(err => console.error(err));
+
+
+
+
+bootstrapApplication(App, {
+  providers: [provideRouter(routes)]
+}).catch(err => console.error(err));
 bootstrapApplication(App, appConfig)
   .catch((err) => console.error(err));
