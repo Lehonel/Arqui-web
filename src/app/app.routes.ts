@@ -10,6 +10,7 @@ import {Recuperar} from './recuperar/recuperar';
 import { Homeusuario } from './usuario/homeusuario/homeusuario';
 import {Homeasesor} from './asesor/homeasesor/homeasesor';
 
+
 export const routes: Routes = [
   {path: '', component: Home},
   {path: 'nosotros', component: Nosotros},
