@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export class AuthService {
   private apiUrlUsuario = 'http://localhost:8080/api/skillink/usuario';
   private apiUrlAsesor = 'http://localhost:8080/api/skillink/asesor';
+  private apiUrlAdministrador = 'http://localhost:8080/api/skillink/administrador';
 
   constructor(private http: HttpClient) {}
 
@@ -19,6 +20,11 @@ export class AuthService {
   registrarAsesor(datos: any): Observable<any> {
     return this.http.post(`${this.apiUrlAsesor}/registrar`, datos);
   }
+
+  registrarAdministrador(datos: any): Observable<any> {
+    return this.http.post(`${this.apiUrlAdministrador}/registrar`, datos);
+  }
+
 
   login(credenciales: any): Observable<{ jwt: string; roles: string[] }> {
     return this.http.post<{ jwt: string; roles: string[] }>(

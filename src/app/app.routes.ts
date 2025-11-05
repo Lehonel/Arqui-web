@@ -9,6 +9,7 @@ import {Registro} from './registro/registro';
 import {Recuperar} from './recuperar/recuperar';
 import { Homeusuario } from './usuario/homeusuario/homeusuario';
 import {Homeasesor} from './asesor/homeasesor/homeasesor';
+import {Homeadministrador} from './administrador/homeadministrador/homeadministrador';
 
 
 export const routes: Routes = [
@@ -22,5 +23,6 @@ export const routes: Routes = [
   {path: 'recuperar', component: Recuperar},
   { path: 'usuario/homeusuario', component: Homeusuario },
   { path: 'asesor/homeasesor', component: Homeasesor },
+  { path: 'administrador/homeadministrador', component: Homeadministrador },
 
 ];

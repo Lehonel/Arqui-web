@@ -14,7 +14,7 @@ import { AuthService } from '../services/auth'; // ajusta a tu archivo real (aut
 })
 export class Registro {
   registroForm: FormGroup;
-  rolSeleccionado: 'usuario' | 'asesor' = 'usuario';
+  rolSeleccionado: 'usuario' | 'asesor' | 'administrador' = 'usuario';
 
   constructor(
     private fb: FormBuilder,
@@ -34,7 +34,7 @@ export class Registro {
   }
 
   // Cambio de rol (usuario / asesor)
-  onRolChange(rol: 'usuario' | 'asesor') {
+  onRolChange(rol: 'usuario' | 'asesor' | 'administrador') {
     this.rolSeleccionado = rol;
   }
 
@@ -69,7 +69,7 @@ export class Registro {
         }
       });
 
-    } else {
+    } else if (datos.rol === 'asesor') {
       // --- ASESOR ---
       const payload = {
         nombreasesor: datos.nombre,
@@ -89,6 +89,27 @@ export class Registro {
         error: (err) => {
           console.error('Error en registro de asesor:', err);
           alert('Error al registrar asesor');
+        }
+      });
+
+    } else if (datos.rol === 'administrador') {
+      // --- ADMINISTRADOR ---
+      const payload = {
+        nombreadmin: datos.nombre,
+        correoadmin: datos.correo,
+        password: datos.password,
+        telefonoadmin: Number(datos.telefono),
+        direccionadmin: datos.direccion
+      };
+
+      this.authService.registrarAdministrador(payload).subscribe({
+        next: () => {
+          alert('Administrador registrado correctamente');
+          this.router.navigate(['/unete']);
+        },
+        error: (err) => {
+          console.error('Error en registro de administrador:', err);
+          alert('Error al registrar administrador');
         }
       });
     }

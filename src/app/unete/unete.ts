@@ -48,6 +48,8 @@ export class Unete {
           this.router.navigate(['/usuario/homeusuario']);
         } else if (res.roles && res.roles.includes('ROLE_ASESOR')) {
           this.router.navigate(['/asesor/homeasesor']);
+        } else if (res.roles && res.roles.includes('ROLE_ADMIN')) {
+          this.router.navigate(['/administrador/homeadministrador']);
         } else {
           alert('Usuario sin rol definido');
           this.router.navigate(['/']); // fallback
