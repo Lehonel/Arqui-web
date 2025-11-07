@@ -1,0 +1,53 @@
+<div class="tabla-container">
+  <h2>Lista de Clientes</h2>
+
+
+  <div class="filtros">
+    <input type="number" #idCliente placeholder="Buscar cliente por ID" class="input-id" />
+    <button class="btn-accion" (click)="buscarPorId(+idCliente.value)">Buscar</button>
+    <button class="btn-accion btn-activo" (click)="filtrarPorEstado(true)">Ver Activos</button>
+    <button class="btn-accion btn-inactivo" (click)="filtrarPorEstado(false)">Ver Inactivos</button>
+    <button class="btn-accion" (click)="cargarClientes()">Mostrar Todos</button>
+  </div>
+
+
+  <div *ngIf="loading" class="mensaje">Cargando clientes...</div>
+  <div *ngIf="error" class="mensaje error">{{ error }}</div>
+
+
+  <table *ngIf="!loading && !error && clientes.length > 0" class="tabla-clientes">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Correo</th>
+      <th>Teléfono</th>
+      <th>Dirección</th>
+      <th>Estado</th>
+      <th>Acciones</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let cliente of clientes">
+      <td>{{ cliente.idcliente }}</td>
+      <td>{{ cliente.nombrecliente }}</td>
+      <td>{{ cliente.correocliente }}</td>
+      <td>{{ cliente.telefonocliente }}</td>
+      <td>{{ cliente.direccioncliente }}</td>
+      <td [ngClass]="cliente.estadocliente ? 'activo' : 'inactivo'">
+        {{ cliente.estadocliente ? 'Activo' : 'Inactivo' }}
+      </td>
+      <td>
+        <button class="btn-eliminar" (click)="eliminarCliente(cliente.idcliente)">
+          🗑 Eliminar
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="!loading && !error && clientes.length === 0" class="mensaje">
+    No hay clientes registrados.
+  </p>
+</div>

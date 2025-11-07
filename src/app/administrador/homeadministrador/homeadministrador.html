@@ -1,1 +1,29 @@
-<p>homeadministrador works!</p>
+<div class="admin-container">
+
+  <div class="menu-secciones">
+    <button
+      [class.activo]="seccionActiva === 'clientes'"
+      (click)="mostrarSeccion('clientes')">
+      Usuarios
+    </button>
+
+    <button
+      [class.activo]="seccionActiva === 'asesores'"
+      (click)="mostrarSeccion('asesores')">
+      Asesores
+    </button>
+
+    <button
+      [class.activo]="seccionActiva === 'asesorias'"
+      (click)="mostrarSeccion('asesorias')">
+      Asesorías
+    </button>
+  </div>
+
+  <div class="contenido-seccion">
+    <app-tabla-clientes *ngIf="seccionActiva === 'clientes'"></app-tabla-clientes>
+    <app-tabla-asesores *ngIf="seccionActiva === 'asesores'"></app-tabla-asesores>
+    <app-tabla-asesorias *ngIf="seccionActiva === 'asesorias'"></app-tabla-asesorias>
+  </div>
+</div>
+

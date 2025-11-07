@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { AdministradorRoutingModule } from './administrador-routing-module';
 
 
@@ -12,3 +11,4 @@ import { AdministradorRoutingModule } from './administrador-routing-module';
   ]
 })
 export class AdministradorModule { }
+
