@@ -52,7 +52,7 @@
 
 .carousel-content {
   display: flex;
-  gap: 1.5rem; /* menos espacio entre cards */
+  gap: 1.5rem;
   transition: transform 0.3s ease;
 }
 
@@ -64,7 +64,7 @@
   color: white;
   border: none;
   border-radius: 50%;
-  width: 45px; /* más pequeño */
+  width: 45px;
   height: 45px;
   display: flex;
   align-items: center;
@@ -91,13 +91,13 @@
 
 /* ======== ASESORÍA CARD ======== */
 .asesoria-card {
-  flex: 0 0 280px; /* ancho “normal” */
+  flex: 0 0 280px;
   background: white;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  height: 420px; /* altura ajustada */
+  height: 420px;
   display: flex;
   flex-direction: column;
 }
@@ -109,22 +109,30 @@
 
 .card-image {
   width: 100%;
-  height: 150px; /* tamaño anterior */
+  height: 180px; /* 🔹 un poquito más grande */
   overflow: hidden;
   position: relative;
+  background-color: #f3f3f3; /* evita el fondo blanco mientras carga */
 }
 
+/* 🔥 Aquí la magia para igualar y mejorar carga */
 .card-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  object-position: center; /* centra las imágenes */
+  border-radius: 0;
+  filter: brightness(0.97);
+  transition: transform 0.3s ease, filter 0.3s ease;
+  will-change: transform, filter;
 }
 
 .asesoria-card:hover .card-image img {
   transform: scale(1.05);
+  filter: brightness(1);
 }
 
+/* ======== CONTENIDO ======== */
 .asesoria-card-content {
   padding: 1rem;
   flex: 1;
@@ -154,11 +162,11 @@
   margin-bottom: 0.8rem;
   display: -webkit-box;
   -webkit-line-clamp: 3;
-  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
+/* ======== RATING Y PRECIO ======== */
 .card-rating {
   display: flex;
   align-items: center;
@@ -197,6 +205,7 @@
   text-decoration: line-through;
 }
 
+/* ======== BOTÓN ======== */
 .card-button {
   width: 100%;
   background: linear-gradient(135deg, #3B4DBE, #1D3557);
@@ -304,6 +313,6 @@
   }
 
   .card-image {
-    height: 120px;
+    height: 140px;
   }
 }
