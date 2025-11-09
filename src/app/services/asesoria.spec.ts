@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import {PreAsesoria } from './asesoria';
+
 import {Asesorias} from '../asesorias/asesorias';
 
 describe('Asesoria', () => {

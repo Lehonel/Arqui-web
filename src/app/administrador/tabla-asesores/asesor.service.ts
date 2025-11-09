@@ -22,7 +22,6 @@ export class AsesorService {
     return this.http.get<any>(`${this.apiUrl}/${id}`);
   }
 
-
   listarAsesoresPorEstado(estado: boolean): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/estado/${estado}`);
   }

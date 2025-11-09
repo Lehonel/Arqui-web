@@ -2,14 +2,16 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../services/auth';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-unete',
+  standalone: true,
   templateUrl: './unete.html',
   styleUrls: ['./unete.css'],
-  imports: [ReactiveFormsModule, RouterLink]
+  imports: [CommonModule, ReactiveFormsModule, RouterLink]
 })
-export class Unete {
+export class UneteComponent {
   loginForm: FormGroup;
 
   constructor(
@@ -17,47 +19,53 @@ export class Unete {
     private authService: AuthService,
     private router: Router
   ) {
-    // Inicializamos formulario con validaciones
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
 
-  login() {
+  login(): void {
     if (this.loginForm.invalid) {
       alert('Por favor ingrese su usuario y contraseña');
       return;
     }
 
-    const payload = {
-      username: this.loginForm.value.username,
-      password: this.loginForm.value.password
-    };
+    const payload = this.loginForm.value;
 
     this.authService.login(payload).subscribe({
-      next: (res) => {
-        // Depuración: ver qué roles llegan desde el backend
-        console.log('Roles recibidos:', res.roles);
+      next: (data) => {
+        console.log('Login correcto', data);
 
-        // Guardamos token en localStorage
-        localStorage.setItem('token', res.jwt);
+        // Guardar token
+        localStorage.setItem('token', data.jwt);
 
-        // Redirigir según rol
-        if (res.roles && res.roles.includes('ROLE_USUARIO')) {
-          this.router.navigate(['/usuario/homeusuario']);
-        } else if (res.roles && res.roles.includes('ROLE_ASESOR')) {
-          this.router.navigate(['/asesor/homeasesor']);
-        } else if (res.roles && res.roles.includes('ROLE_ADMIN')) {
-          this.router.navigate(['/administrador/homeadministrador']);
+        // Guardar y actualizar rol
+        const rol = data.roles[0];
+        this.authService.setRol(rol);
+
+        console.log('Rol guardado:', rol);
+        console.log('localStorage rol:', localStorage.getItem('rol'));
+
+        if (rol === 'ADMIN') {
+          this.router.navigate(['/admin']).then(() => {
+            window.location.reload(); // Forzar recarga
+          });
+        } else if (rol === 'ASESOR') {
+          this.router.navigate(['/asesor/homeasesor']).then(() => {
+            window.location.reload();
+          });
+        } else if (rol === 'USUARIO') {
+          this.router.navigate(['/usuario/homeusuario']).then(() => {
+            window.location.reload();
+          });
         } else {
-          alert('Usuario sin rol definido');
-          this.router.navigate(['/']); // fallback
+          this.router.navigate(['/']);
         }
       },
       error: (err) => {
-        console.error(err);
-        alert('Credenciales incorrectas');
+        alert('Error de autenticación. Verifica tus credenciales.');
+        console.error('Error en login:', err);
       }
     });
   }

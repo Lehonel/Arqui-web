@@ -1,30 +1,50 @@
-
-<nav id ="general" *ngIf="mostrarNavbar" class="navbar">
+<nav *ngIf="mostrarNavbar" class="navbar">
   <div class="navbar-left">
-    <a [routerLink]="'/'" class="logo-container">
-
-      <span class="logo-text">
-        <strong>SKILL</strong> LINK
-      </span>
+    <!-- Logo dinámico según rol -->
+    <a [routerLink]="getHomeRoute()"
+       (click)="navigateToHome($event)"
+       class="logo-container"
+       [class.disabled]="rol === 'ADMIN'">
+      <span class="logo-text"><strong>SKILL</strong> LINK</span>
     </a>
   </div>
 
-  <div class="navbar-links" [class.active]="menuAbierto">
-    <a [routerLink]="'/expertos'" (click)="cerrarMenu()">Expertos</a>
-    <a [routerLink]="'/asesorias'" (click)="cerrarMenu()">Asesorías</a>
-    <a [routerLink]="'/nosotros'" (click)="cerrarMenu()">Nosotros</a>
-    <a [routerLink]="'/soporte'" (click)="cerrarMenu()">Soporte Técnico</a>
-  </div>
+  <!-- Nav según rol -->
+  <div [ngSwitch]="rol" class="navbar-links">
 
-  <div class="navbar-right">
-    <button class="btn-unete" [routerLink]="'/unete'" (click)="cerrarMenu()">ÚNETE</button>
-  </div>
+    <!-- Usuario -->
+    <ng-container *ngSwitchCase="'USUARIO'">
+      <a [routerLink]="'/usuario/usuarioexpertos'">Expertos</a>
+      <a [routerLink]="'/usuario/usuarioasesorias'">Asesorías</a>
+      <a [routerLink]="'/usuario/usuarionosotros'">Nosotros</a>
+      <a [routerLink]="'/usuario/usuariosoporte'">Soporte Técnico</a>
+      <button class="btn-unete" (click)="cerrarSesion()">Cerrar sesión</button>
+    </ng-container>
 
-  <!-- Botón hamburguesa -->
-  <div class="menu-toggle" (click)="toggleMenu()">
-    <span class="bar"></span>
-    <span class="bar"></span>
-    <span class="bar"></span>
+    <!-- Asesor -->
+    <ng-container *ngSwitchCase="'ASESOR'">
+
+      <a [routerLink]="'/asesor/asesorasesorias'">Asesorías</a>
+      <a [routerLink]="'/asesor/asesorsoporte'">Soporte Técnico</a>
+      <button class="btn-unete" (click)="cerrarSesion()">Cerrar sesión</button>
+    </ng-container>
+
+    <!-- Admin -->
+    <ng-container *ngSwitchCase="'ADMIN'">
+      <a [routerLink]="'/administrador/tabla-clientes'">Sector Cliente</a>
+      <a [routerLink]="'/administrador/tabla-asesores'">Sector Asesor</a>
+      <a [routerLink]="'/administrador/tabla-asesorias'">Sector Asesorías</a>
+      <button class="btn-unete" (click)="cerrarSesion()">Cerrar sesión</button>
+    </ng-container>
+
+    <!-- Landing -->
+    <ng-container *ngSwitchDefault>
+      <a [routerLink]="'/expertos'">Expertos</a>
+      <a [routerLink]="'/asesorias'">Asesorías</a>
+      <a [routerLink]="'/nosotros'">Sobre Nosotros</a>
+      <a [routerLink]="'/soporte'">Soporte Técnico</a>
+      <button class="btn-unete" [routerLink]="'/unete'">Únete</button>
+    </ng-container>
   </div>
 </nav>
 

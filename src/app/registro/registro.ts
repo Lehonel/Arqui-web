@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../services/auth'; // ajusta a tu archivo real (auth o auth.service)
+import { AuthService } from '../services/auth';
 
 @Component({
   selector: 'app-registro',
@@ -19,9 +19,8 @@ export class Registro {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private authService: AuthService //inyectamos el servicio
+    private authService: AuthService
   ) {
-    // Inicializa el formulario
     this.registroForm = this.fb.group({
       rol: ['usuario', Validators.required],
       nombre: ['', Validators.required],
@@ -29,17 +28,15 @@ export class Registro {
       password: ['', Validators.required],
       telefono: ['', Validators.required],
       direccion: ['', Validators.required],
-      especialidad: [''] // solo para asesores
+      especialidad: ['']
     });
   }
 
-  // Cambio de rol (usuario / asesor)
-  onRolChange(rol: 'usuario' | 'asesor') {
+  onRolChange(rol: 'usuario' | 'asesor'): void {
     this.rolSeleccionado = rol;
   }
 
-
-  registrar() {
+  registrar(): void {
     if (this.registroForm.invalid) {
       alert('Por favor completa todos los campos obligatorios');
       return;
@@ -59,18 +56,27 @@ export class Registro {
       };
 
       this.authService.registrarUsuario(payload).subscribe({
-        next: () => {
+        next: (response) => {
+          console.log('Usuario registrado:', response);
           alert('Usuario registrado correctamente');
+          // Redirigir al login
           this.router.navigate(['/unete']);
         },
         error: (err) => {
           console.error('Error en registro de usuario:', err);
-          alert('Error al registrar usuario');
+          alert('Error al registrar usuario: ' + (err.error?.message || 'Error desconocido'));
         }
       });
 
     } else if (datos.rol === 'asesor') {
       // --- ASESOR ---
+
+      // Validar que tenga especialidad
+      if (!datos.especialidad || datos.especialidad.trim() === '') {
+        alert('Por favor ingresa tu especialidad');
+        return;
+      }
+
       const payload = {
         nombreasesor: datos.nombre,
         correoasesor: datos.correo,
@@ -82,13 +88,15 @@ export class Registro {
       };
 
       this.authService.registrarAsesor(payload).subscribe({
-        next: () => {
+        next: (response) => {
+          console.log('Asesor registrado:', response);
           alert('Asesor registrado correctamente');
+          // Redirigir al login
           this.router.navigate(['/unete']);
         },
         error: (err) => {
           console.error('Error en registro de asesor:', err);
-          alert('Error al registrar asesor');
+          alert('Error al registrar asesor: ' + (err.error?.message || 'Error desconocido'));
         }
       });
     }
