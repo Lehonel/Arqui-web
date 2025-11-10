@@ -18,6 +18,7 @@ import {Asesorsoporte} from './asesor/asesorsoporte/asesorsoporte';
 import {TablaAsesoresComponent} from './administrador/tabla-asesores/tabla-asesores';
 import {TablaClientesComponent} from './administrador/tabla-clientes/tabla-clientes';
 import {TablaAsesoriasComponent} from './administrador/tabla-asesorias/tabla-asesorias';
+import { AuthGuard } from './guards/auth-guard';
 
 export const routes: Routes = [
   { path: '', component: Home },
@@ -30,20 +31,20 @@ export const routes: Routes = [
   { path: 'recuperar', component: Recuperar },
 
 
-  { path: 'usuario/homeusuario', component: Homeusuario },
-  { path: 'usuario/usuarioexpertos', component: Usuarioexpertos },
-  { path: 'usuario/usuariosoporte', component: Usuariosoporte },
-  { path: 'usuario/usuarionosotros', component: Usuarionosotros },
-  { path: 'usuario/usuarioasesorias', component: Usuarioasesorias },
+  { path: 'usuario/homeusuario', component: Homeusuario, canActivate: [AuthGuard] },
+  { path: 'usuario/usuarioexpertos', component: Usuarioexpertos, canActivate: [AuthGuard] },
+  { path: 'usuario/usuariosoporte', component: Usuariosoporte, canActivate: [AuthGuard] },
+  { path: 'usuario/usuarionosotros', component: Usuarionosotros, canActivate: [AuthGuard] },
+  { path: 'usuario/usuarioasesorias', component: Usuarioasesorias, canActivate: [AuthGuard] },
 
-  { path: 'asesor/homeasesor', component: Homeasesor },
-  { path: 'asesor/asesorasesorias', component: Asesorasesorias },
-  { path: 'asesor/asesorsoporte', component: Asesorsoporte },
+  { path: 'asesor/homeasesor', component: Homeasesor, canActivate: [AuthGuard] },
+  { path: 'asesor/asesorasesorias', component: Asesorasesorias, canActivate: [AuthGuard] },
+  { path: 'asesor/asesorsoporte', component: Asesorsoporte, canActivate: [AuthGuard] },
 
 
-  { path: 'administrador/tabla-asesores', component: TablaAsesoresComponent },
-  { path: 'administrador/tabla-clientes', component: TablaClientesComponent },
-  { path: 'administrador/tabla-asesorias', component: TablaAsesoriasComponent },
+  { path: 'administrador/tabla-asesores', component: TablaAsesoresComponent, canActivate: [AuthGuard] },
+  { path: 'administrador/tabla-clientes', component: TablaClientesComponent, canActivate: [AuthGuard] },
+  { path: 'administrador/tabla-asesorias', component: TablaAsesoriasComponent, canActivate: [AuthGuard] },
 
 
   { path: '**', redirectTo: '' }

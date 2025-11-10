@@ -83,8 +83,6 @@ export class AppComponent implements OnInit {
     console.log('Cerrando sesión...');
     this.authService.logout();
     this.rol = null;
-    this.router.navigate(['/']).then(() => {
-      window.location.reload();
-    });
+    this.router.navigate(['/home']); // Llévalo al login o inicio
   }
 }
