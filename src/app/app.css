@@ -15,16 +15,22 @@ router-outlet {
   display: block;
 }
 
+/* 🔹 NAVBAR GENERAL */
 .navbar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; /* separa izquierda, centro y derecha */
   background-color: #ffffff;
   padding: 10px 40px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   z-index: 1000;
+}
+
+/* 🔹 Logo Izquierdo */
+.navbar-left {
+  flex: 0 0 auto;
 }
 
 .logo-container {
@@ -45,32 +51,42 @@ router-outlet {
   font-weight: 600;
 }
 
-/* --- Ajustes centrado y estilos del navbar --- */
+/* 🔹 Enlaces Centrales */
 .navbar-links {
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center; /* centra los links */
   gap: 30px;
-  flex: 1; /* ocupa todo el espacio entre logo y borde */
   flex-wrap: wrap;
 }
 
 .navbar-links a,
 .navbar-links button {
   text-decoration: none;
-  color: #1b2b50; /* texto oscuro para links */
+  color: #1b2b50;
   font-weight: 500;
   transition: color 0.3s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .navbar-links a:hover {
   color: #243864;
 }
 
-/* Botón "Únete" más visible */
+/* 🔹 Sección Derecha */
+.navbar-right {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+/* 🔹 Botón "Únete" / "Cerrar sesión" */
 .btn-unete {
-  background-color: #90b2d8; /* fondo naranja brillante */
-  color: #ffffff; /* texto blanco */
+  background-color: #90b2d8;
+  color: #ffffff;
   border: none;
   padding: 10px 28px;
   border-radius: 8px;
@@ -85,6 +101,7 @@ router-outlet {
   transform: translateY(-2px);
 }
 
+/* 🔹 Toggle del menú (versión móvil) */
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -98,10 +115,11 @@ router-outlet {
   margin: 4px 0;
 }
 
-/* --- Responsivo --- */
+/* 🔹 RESPONSIVO */
 @media (max-width: 900px) {
   .navbar {
     padding: 15px 25px;
+    flex-wrap: wrap;
   }
 
   .navbar-links {
@@ -131,12 +149,22 @@ router-outlet {
     display: flex;
   }
 
-  .btn-unete {
-    display: block;
-    margin: 10px auto; /* centra el botón en móvil */
+  /* 🔹 Botón centrado en móvil */
+  .navbar-right {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
   }
 
-  html, body {
+  .btn-unete {
+    width: 80%;
+    max-width: 220px;
+    margin: 10px auto;
+  }
+
+  html,
+  body {
     height: 100%;
     margin: 0;
     padding: 0;
@@ -149,77 +177,5 @@ router-outlet {
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
     color: #333;
-  }
-
-  .main {
-    flex: 1;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 40px;
-  }
-
-  .faq, .contact-support, .knowledge-base {
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-
-  h1, h2 {
-    margin: 0 0 20px;
-  }
-
-  .faq ul, .knowledge-base ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  .help{
-    color: #457B9D;
-    font-weight: lighter;
-    margin-bottom: 10px;
-  }
-
-  .faq ul li, .knowledge-base ul li {
-    margin-bottom: 15px;
-  }
-
-  .faq ul li a, .knowledge-base ul li a {
-    text-decoration: none;
-    color: #457B9D;
-  }
-
-  .faq ul li a:hover, .knowledge-base ul li a:hover {
-    text-decoration: underline;
-  }
-
-  .faq li {
-    margin-bottom: 25px;
-  }
-
-  .faq li p {
-    margin: 5px 0 0 20px;
-    font-size: 0.9em;
-    color: #666;
-  }
-
-  .btn {
-    display: inline-block;
-    width: 100%;
-    padding: 15px;
-    margin-top: 10px;
-    text-align: center;
-    color: white;
-    background-color: #457B9D;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    max-width: max-content;
-  }
-
-  .btn:hover {
-    background-color: #5362eb;
   }
 }
