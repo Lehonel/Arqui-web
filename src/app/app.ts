@@ -64,7 +64,7 @@ export class AppComponent implements OnInit {
       case 'ASESOR':
         return '/asesor/homeasesor';
       case 'ADMIN':
-        return ''; // No redirige
+        return '';
       default:
         return '/'; // Landing
     }

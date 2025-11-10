@@ -48,7 +48,7 @@ export class UneteComponent {
         console.log('localStorage rol:', localStorage.getItem('rol'));
 
         if (rol === 'ADMIN') {
-          this.router.navigate(['/admin']).then(() => {
+          this.router.navigate(['/administrador/tabla-clientes']).then(() => {
             window.location.reload(); // Forzar recarga
           });
         } else if (rol === 'ASESOR') {
