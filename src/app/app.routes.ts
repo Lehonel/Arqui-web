@@ -20,6 +20,9 @@ import {TablaClientesComponent} from './administrador/tabla-clientes/tabla-clien
 import {TablaAsesoriasComponent} from './administrador/tabla-asesorias/tabla-asesorias';
 import { AuthGuard } from './guards/auth-guard';
 
+
+
+
 export const routes: Routes = [
   { path: '', component: Home },
   { path: 'nosotros', component: Nosotros },
@@ -29,6 +32,7 @@ export const routes: Routes = [
   { path: 'unete', component: UneteComponent },
   { path: 'registro', component: Registro },
   { path: 'recuperar', component: Recuperar },
+
 
 
   { path: 'usuario/homeusuario', component: Homeusuario, canActivate: [AuthGuard] },
