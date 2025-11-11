@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterModule, NavigationEnd } from '@angular/router';
 import { AuthService } from './services/auth';
 import { filter } from 'rxjs/operators';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ import { filter } from 'rxjs/operators';
   templateUrl: './app.html',
   styleUrls: ['./app.css'],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [CommonModule, RouterModule, RouterLink],
+  imports: [CommonModule, RouterModule, RouterLink, HttpClientModule],
 })
 export class AppComponent implements OnInit {
   mostrarNavbar = true;
@@ -37,6 +38,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     // Inicializar rol desde localStorage si existe
     const rolGuardado = localStorage.getItem('rol');
+    const currentUrl = this.router.url;
     if (rolGuardado) {
       this.rol = rolGuardado;
       console.log('Rol cargado en ngOnInit:', this.rol);
@@ -64,9 +66,9 @@ export class AppComponent implements OnInit {
       case 'ASESOR':
         return '/asesor/homeasesor';
       case 'ADMIN':
-        return '';
+        return '/home';
       default:
-        return '/'; // Landing
+        return '/home'; // Landing
     }
   }
 

@@ -14,17 +14,17 @@ export class AuthGuard implements CanActivate {
 
     // No hay token → no puede entrar
     if (!token) {
-      this.router.navigate(['/unete']);
+      this.router.navigate(['/']);
       return false;
     }
 
     // Reglas por rol
-    if (rol === 'ADMIN' && ruta.startsWith('/administrador')) return true;
+    if (rol === 'ADMIN' && ruta.startsWith('/administrador/tabla-clientes')) return true;
     if (rol === 'ASESOR' && ruta.startsWith('/asesor')) return true;
     if (rol === 'USUARIO' && ruta.startsWith('/usuario')) return true;
 
     // Si el rol no coincide con la ruta → redirige
-    this.router.navigate(['/home']);
+    this.router.navigate(['/']);
     return false;
   }
 }
