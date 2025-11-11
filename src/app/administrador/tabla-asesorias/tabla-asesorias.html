@@ -1,0 +1,57 @@
+<div class="tabla-container">
+  <h2>Lista de Asesorías</h2>
+
+
+  <div class="filtros">
+    <input type="number" #idAsesoria placeholder="Buscar por ID" />
+    <button class="btn-accion" (click)="buscarPorId(+idAsesoria.value)">Buscar</button>
+
+    <input type="date" #fechaAsesoria />
+    <button class="btn-accion" (click)="buscarPorFecha(fechaAsesoria.value)">Buscar por Fecha</button>
+
+    <button class="btn-accion todos" (click)="cargarAsesorias()">Mostrar Todos</button>
+  </div>
+
+
+  <div *ngIf="loading" class="mensaje">Cargando asesorías...</div>
+  <div *ngIf="error" class="mensaje error">{{ error }}</div>
+
+  <!-- 🔹 Tabla -->
+  <table *ngIf="!loading && !error && asesorias.length > 0" class="tabla-asesorias">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Costo</th>
+      <th>Fecha</th>
+      <th>ID Cliente</th>
+      <th>ID Asesor</th>
+      <th>Imagen</th>
+      <th>Acciones</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let asesoria of asesorias">
+      <td>{{ asesoria.idasesoria }}</td>
+      <td>{{ asesoria.nombreasesoria }}</td>
+      <td>{{ asesoria.descripcionasesoria }}</td>
+      <td>S/ {{ asesoria.costoasesoria }}</td>
+      <td>{{ asesoria.fechasesoria }}</td>
+      <td>{{ asesoria.idcliente }}</td>
+      <td>{{ asesoria.asesor?.idasesor }}</td>
+      <td>
+        <img [src]="getImagenUrl(asesoria.urlimg)" [alt]="asesoria.nombreasesoria" width="80" height="60" style="object-fit: cover; border-radius: 6px;" />
+      </td>
+      <td>
+        <button class="btn-eliminar" (click)="eliminarAsesoria(asesoria.idasesoria)">🗑 Eliminar</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="!loading && !error && asesorias.length === 0" class="mensaje">
+    No hay asesorías registradas.
+  </p>
+</div>

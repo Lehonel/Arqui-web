@@ -1,11 +1,105 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { CartillaAsesorService, CartillaAsesor } from './cartillaasesor.service';
 
 @Component({
   selector: 'app-expertos',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './expertos.html',
-  styleUrl: './expertos.css',
+  styleUrls: ['./expertos.css']
 })
-export class Expertos {
+export class Expertos implements OnInit {
+  cartillas: CartillaAsesor[] = [];
+  cartillasFiltradas: CartillaAsesor[] = [];
 
+  categorias = ['Todos', 'Programación', 'Diseño', 'Marketing', 'Idiomas', 'Negocios'];
+  categoriaActiva = 'Todos';
+
+  rangoPrecio: string = '';
+  rangoExperiencia: string = '';
+  estrellasFiltro: number | null = null;
+
+  constructor(private cartillaService: CartillaAsesorService) {}
+
+  ngOnInit(): void {
+    this.cargarCartillas();
+  }
+
+  cargarCartillas(): void {
+    this.cartillaService.listarCartillas().subscribe({
+      next: data => {
+        this.cartillas = data;
+        this.aplicarFiltros();
+      },
+      error: err => console.error('Error al cargar cartillas:', err)
+    });
+  }
+
+  // 🔹 Filtros de selects
+  filtrarPorRangoPrecio(valor: string): void {
+    this.rangoPrecio = valor;
+    this.aplicarFiltros();
+  }
+
+  filtrarPorExperienciaRango(valor: string): void {
+    this.rangoExperiencia = valor;
+    this.aplicarFiltros();
+  }
+
+  filtrarPorEstrellas(estrellas: number): void {
+    this.estrellasFiltro = estrellas;
+    this.aplicarFiltros();
+  }
+
+  filtrarPorCategoria(categoria: string): void {
+    this.categoriaActiva = categoria;
+    this.aplicarFiltros();
+  }
+
+  // 🔹 Aplica todos los filtros combinados
+  aplicarFiltros(): void {
+    this.cartillasFiltradas = this.cartillas.filter(c => {
+      // Filtrar por categoría
+      const coincideCategoria =
+        this.categoriaActiva === 'Todos' ||
+        c.especialcartillaasesor === this.categoriaActiva;
+
+      // Filtrar por estrellas
+      const coincideEstrellas =
+        this.estrellasFiltro === null ||
+        c.estrellascartillaasesor === this.estrellasFiltro;
+
+      // Filtrar por precio
+      let coincidePrecio = true;
+      if (this.rangoPrecio) {
+        const [min, max] = this.rangoPrecio.split('-').map(Number);
+        coincidePrecio =
+          c.preciocartillaasesor >= min && c.preciocartillaasesor <= max;
+      }
+
+      // Filtrar por años de experiencia
+      let coincideExperiencia = true;
+      if (this.rangoExperiencia) {
+        const [min, max] = this.rangoExperiencia.split('-').map(Number);
+        const anhos = parseInt(c.anhoexperienciacartillaasesor, 10);
+        coincideExperiencia = anhos >= min && anhos <= max;
+      }
+
+      return coincideCategoria && coincideEstrellas && coincidePrecio && coincideExperiencia;
+    });
+  }
+
+  // 🔹 Helpers
+  getStars(estrellas: number): string[] {
+    return Array(5)
+      .fill('☆')
+      .map((s, i) => (i < estrellas ? '★' : '☆'));
+  }
+
+  getImagenUrl(url: string): string {
+    if (!url) return 'http://localhost:8080/Imagenes/default.jpg';
+    const nombreArchivo = url.split(/[\\/]/).pop();
+    return `http://localhost:8080/Imagenes/${nombreArchivo}`;
+  }
 }

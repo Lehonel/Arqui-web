@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { Expertos } from './expertos';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { CartillaAsesorService } from './cartillaasesor.service';
 
 describe('Expertos', () => {
   let component: Expertos;
@@ -8,16 +9,16 @@ describe('Expertos', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Expertos]
-    })
-    .compileComponents();
+      imports: [HttpClientTestingModule, Expertos],
+      providers: [CartillaAsesorService]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(Expertos);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the Expertos component', () => {
     expect(component).toBeTruthy();
   });
 });

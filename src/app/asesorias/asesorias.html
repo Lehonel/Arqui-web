@@ -2,34 +2,30 @@
 
 <main class="asesorias-page">
 
+  <!-- ======== SECCIÓN DE ASESORÍAS RECOMENDADAS ======== -->
   <section class="asesorias-recomendadas-section">
     <div class="frase-container">
       <h1>Asesorías Recomendadas</h1>
 
       <div class="carousel-container">
+        <!-- Botón anterior -->
         <button class="carousel-btn carousel-btn-prev" (click)="prevSlide()">
           <i class="fa-solid fa-chevron-left"></i>
         </button>
 
+        <!-- Contenedor del carrusel -->
         <div class="carousel-wrapper">
-          <div class="carousel-content">
-            <div class="asesoria-card" *ngFor="let asesoria of asesoriasRecomendadas; let i = index"
-                 [style.transform]="getCarouselTransform()">
+          <div class="carousel-content" [style.transform]="getCarouselTransform()">
+            <div class="asesoria-card" *ngFor="let asesoria of asesoriasRecomendadas">
               <div class="card-image">
-                <img [src]="asesoria.img" [alt]="asesoria.titulo">
+                <img [src]="'http://localhost:8080/' + asesoria.urlimg" [alt]="asesoria.nombreasesoria">
               </div>
               <div class="asesoria-card-content">
-                <h3>{{ asesoria.titulo }}</h3>
-                <p class="card-description">{{ asesoria.descripcion }}</p>
-                <div class="card-rating">
-                  <div class="stars">
-                    <i *ngFor="let star of getStars(asesoria.rating)" [ngClass]="star"></i>
-                  </div>
-                  <span class="rating-text">{{ asesoria.rating }} ({{ asesoria.resenas }} reseñas)</span>
-                </div>
+                <h3>{{ asesoria.nombreasesoria }}</h3>
+                <p class="card-asesor">Asesor: {{ asesoria.asesor.nombreasesor }}</p>
+                <p class="card-description">{{ asesoria.descripcionasesoria }}</p>
                 <div class="card-price">
-                  <span class="price">S/. {{ asesoria.precio }}</span>
-                  <span class="old-price">S/. {{ asesoria.precioAntiguo }}</span>
+                  <span class="price">S/. {{ asesoria.costoasesoria }}.00</span>
                 </div>
                 <button class="card-button">Ver Asesoría</button>
               </div>
@@ -37,6 +33,7 @@
           </div>
         </div>
 
+        <!-- Botón siguiente -->
         <button class="carousel-btn carousel-btn-next" (click)="nextSlide()">
           <i class="fa-solid fa-chevron-right"></i>
         </button>
@@ -44,39 +41,39 @@
     </div>
   </section>
 
+  <!-- ======== SECCIÓN DE TODAS LAS ASESORÍAS ======== -->
   <section class="asesorias-section">
     <div class="asesorias-content-wrapper">
+
+      <!-- CATEGORÍAS -->
       <aside class="asesorias-categories">
         <ul class="category-list">
-          <li *ngFor="let cat of categorias" [class.active]="cat === categoriaActiva"
+          <li *ngFor="let cat of categorias"
+              [class.active]="cat === categoriaActiva"
               (click)="filtrarPorCategoria(cat)">
             {{ cat }}
           </li>
         </ul>
       </aside>
 
+      <!-- CATÁLOGO DE ASESORÍAS -->
       <div class="asesorias-catalog">
         <div class="asesoria-card" *ngFor="let asesoria of asesoriasFiltradas">
           <div class="card-image">
-            <img [src]="asesoria.img" [alt]="asesoria.titulo">
+            <img [src]="'http://localhost:8080/' + asesoria.urlimg" [alt]="asesoria.nombreasesoria">
           </div>
           <div class="asesoria-card-content">
-            <h3>{{ asesoria.titulo }}</h3>
-            <p class="card-description">{{ asesoria.descripcion }}</p>
-            <div class="card-rating">
-              <div class="stars">
-                <i *ngFor="let star of getStars(asesoria.rating)" [ngClass]="star"></i>
-              </div>
-              <span class="rating-text">{{ asesoria.rating }} ({{ asesoria.resenas }} reseñas)</span>
-            </div>
+            <h3>{{ asesoria.nombreasesoria }}</h3>
+            <p class="card-asesor">Asesor: {{ asesoria.asesor.nombreasesor }}</p>
+            <p class="card-description">{{ asesoria.descripcionasesoria }}</p>
             <div class="card-price">
-              <span class="price">S/. {{ asesoria.precio }}</span>
-              <span class="old-price">S/. {{ asesoria.precioAntiguo }}</span>
+              <span class="price">S/. {{ asesoria.costoasesoria }}.00</span>
             </div>
             <button class="card-button">Ver Asesoría</button>
           </div>
         </div>
       </div>
+
     </div>
   </section>
 

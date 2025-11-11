@@ -1,35 +1,72 @@
-
 <nav *ngIf="mostrarNavbar" class="navbar">
+  <!-- 🔹 Logo Izquierdo -->
   <div class="navbar-left">
-    <a [routerLink]="'/'" class="logo-container">
-
-      <span class="logo-text">
-        <strong>SKILL</strong> LINK
-      </span>
+    <a
+      [routerLink]="getHomeRoute()"
+      (click)="navigateToHome($event)"
+      class="logo-container"
+      [class.disabled]="rol === 'ADMIN'"
+    >
+      <span class="logo-text"><strong>SKILL</strong> LINK</span>
     </a>
   </div>
 
-  <div class="navbar-links" [class.active]="menuAbierto">
-    <a [routerLink]="'/expertos'" (click)="cerrarMenu()">Expertos</a>
-    <a [routerLink]="'/asesorias'" (click)="cerrarMenu()">Asesorías</a>
-    <a [routerLink]="'/nosotros'" (click)="cerrarMenu()">Nosotros</a>
-    <a [routerLink]="'/soporte'" (click)="cerrarMenu()">Soporte Técnico</a>
+
+  <div [ngSwitch]="rol" class="navbar-links">
+    <!-- Usuario -->
+    <ng-container *ngSwitchCase="'USUARIO'">
+      <a [routerLink]="'/usuario/usuarioexpertos'">Expertos</a>
+      <a [routerLink]="'/usuario/usuarioasesorias'">Asesorías</a>
+      <a [routerLink]="'/usuario/usuarionosotros'">Nosotros</a>
+      <a [routerLink]="'/usuario/usuariosoporte'">Soporte Técnico</a>
+    </ng-container>
+
+
+    <ng-container *ngSwitchCase="'ASESOR'">
+      <a [routerLink]="'/asesor/asesorasesorias'">Asesorías</a>
+      <a [routerLink]="'/asesor/asesorsoporte'">Soporte Técnico</a>
+    </ng-container>
+
+
+    <ng-container *ngSwitchCase="'ADMIN'">
+      <a [routerLink]="'/administrador/tabla-clientes'">Sector Cliente</a>
+      <a [routerLink]="'/administrador/tabla-asesores'">Sector Asesor</a>
+      <a [routerLink]="'/administrador/tabla-asesorias'">Sector Asesorías</a>
+    </ng-container>
+
+
+    <ng-container *ngSwitchDefault>
+      <a [routerLink]="'/expertos'">Expertos</a>
+      <a [routerLink]="'/asesorias'">Asesorías</a>
+      <a [routerLink]="'/nosotros'">Sobre Nosotros</a>
+      <a [routerLink]="'/soporte'">Soporte Técnico</a>
+    </ng-container>
   </div>
 
   <div class="navbar-right">
-    <button class="btn-unete" [routerLink]="'/unete'" (click)="cerrarMenu()">ÚNETE</button>
-  </div>
+    <ng-container [ngSwitch]="rol">
+      <ng-container *ngSwitchCase="'ADMIN'">
+        <button class="btn-unete" (click)="cerrarSesion()">Cerrar sesión</button>
+      </ng-container>
 
-  <!-- Botón hamburguesa -->
-  <div class="menu-toggle" (click)="toggleMenu()">
-    <span class="bar"></span>
-    <span class="bar"></span>
-    <span class="bar"></span>
+      <ng-container *ngSwitchCase="'ASESOR'">
+        <button class="btn-unete" (click)="cerrarSesion()">Cerrar sesión</button>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'USUARIO'">
+        <button class="btn-unete" (click)="cerrarSesion()">Cerrar sesión</button>
+      </ng-container>
+
+      <ng-container *ngSwitchDefault>
+        <button class="btn-unete" [routerLink]="'/unete'">Únete</button>
+      </ng-container>
+    </ng-container>
   </div>
 </nav>
 
 <router-outlet></router-outlet>
 
+<!-- 🔹 Footer -->
 <footer *ngIf="mostrarFooter" class="footer-skilllink">
   <div class="footer-content">
     <nav class="footer-nav">
@@ -39,6 +76,7 @@
       <a [routerLink]="'/nosotros'">Sobre Nosotros</a>
       <a [routerLink]="'/soporte'">Soporte Técnico</a>
     </nav>
+
     <div class="icons">
       <a href="#"><ion-icon name="logo-facebook" class="icon"></ion-icon></a>
       <a href="#"><ion-icon name="logo-google" class="icon"></ion-icon></a>
@@ -46,6 +84,7 @@
       <a href="#"><ion-icon name="logo-linkedin" class="icon"></ion-icon></a>
     </div>
   </div>
+
   <div class="footer-bottom">
     &copy; 2025 SkillLink. Todos los derechos reservados.
   </div>

@@ -1,0 +1,52 @@
+<div class="tabla-container">
+  <h2>Lista de Asesores</h2>
+
+  <div class="filtros">
+    <input type="number" #idAsesor placeholder="Buscar por ID" />
+    <button (click)="buscarPorId(+idAsesor.value)">Buscar</button>
+
+    <button (click)="filtrarPorEstado(true)">Ver Activos</button>
+    <button (click)="filtrarPorEstado(false)">Ver Inactivos</button>
+
+    <input type="text" #esp placeholder="Filtrar por especialidad" />
+    <button (click)="filtrarPorEspecialidad(esp.value)">Buscar</button>
+
+    <button (click)="obtenerAsesores()">Mostrar Todos</button>
+  </div>
+
+  <div *ngIf="loading">Cargando asesores...</div>
+  <div *ngIf="error">{{ error }}</div>
+
+  <table *ngIf="!loading && asesores.length > 0" class="tabla-asesores">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Correo</th>
+      <th>Especialidad</th>
+      <th>Estado</th>
+      <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let asesor of asesores">
+      <td>{{ asesor.idasesor }}</td>
+      <td>{{ asesor.nombreasesor }}</td>
+      <td>{{ asesor.correoasesor }}</td>
+      <td>{{ asesor.especialidadasesor }}</td>
+      <td [ngClass]="asesor.estadoasesor ? 'activo' : 'inactivo'">
+        {{ asesor.estadoasesor ? 'Activo' : 'Inactivo' }}
+      </td>
+      <td>
+        <button class="btn-eliminar" (click)="eliminarAsesor(asesor.idasesor)">
+          🗑 Eliminar
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="!loading && asesores.length === 0">
+    No hay asesores registrados.
+  </p>
+</div>

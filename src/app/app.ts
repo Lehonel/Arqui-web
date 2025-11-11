@@ -1,51 +1,88 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { Router, NavigationEnd, RouterLink, RouterOutlet } from '@angular/router';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Router, RouterLink, RouterModule, NavigationEnd } from '@angular/router';
+import { AuthService } from './services/auth';
 import { filter } from 'rxjs/operators';
-import { NgIf, NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
   templateUrl: './app.html',
   styleUrls: ['./app.css'],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [NgIf, RouterLink, RouterOutlet]
+  imports: [CommonModule, RouterModule, RouterLink],
 })
-export class App {
+export class AppComponent implements OnInit {
   mostrarNavbar = true;
-  mostrarFooter = true; // <-- nueva variable
-  menuAbierto = false;
+  mostrarFooter = true;
+  rol: string | null = null;
 
-  constructor(private router: Router) {
-    this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe((event: any) => {
-        const rutaActual = event.urlAfterRedirects;
-        console.log('Ruta actual:', rutaActual);
+  constructor(private authService: AuthService, private router: Router) {
+    // Suscribirse a cambios de rol en AuthService
+    this.authService.rol$.subscribe((rol) => {
+      this.rol = rol;
+      console.log('Rol actualizado en AppComponent:', this.rol);
+    });
 
-        // Navbar
-        if (rutaActual === '/unete' || rutaActual === '/registro' || rutaActual === '/recuperar') {
-          this.mostrarNavbar = false;
-        } else {
-          this.mostrarNavbar = true;
-        }
-
-        // Footer
-        if (rutaActual === '/unete' || rutaActual === '/registro' || rutaActual === '/recuperar') {
-          this.mostrarFooter = false;
-        } else {
-          this.mostrarFooter = true;
-        }
-
-        this.menuAbierto = false;
-      });
+    // Detectar cambios de ruta para ocultar navbar/footer en páginas específicas
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      console.log('Navegación detectada. URL:', this.router.url);
+      console.log('Rol actual:', this.rol);
+      this.verificarRutasEspeciales();
+    });
   }
 
-  toggleMenu() {
-    this.menuAbierto = !this.menuAbierto;
+  ngOnInit(): void {
+    // Inicializar rol desde localStorage si existe
+    const rolGuardado = localStorage.getItem('rol');
+    if (rolGuardado) {
+      this.rol = rolGuardado;
+      console.log('Rol cargado en ngOnInit:', this.rol);
+    }
   }
 
-  cerrarMenu() {
-    this.menuAbierto = false;
+  verificarRutasEspeciales(): void {
+    const rutaActual = this.router.url;
+    const rutasSinNavFooter = ['/registro', '/unete'];
+
+    if (rutasSinNavFooter.some(ruta => rutaActual.includes(ruta))) {
+      this.mostrarNavbar = false;
+      this.mostrarFooter = false;
+    } else {
+      this.mostrarNavbar = true;
+      this.mostrarFooter = true;
+    }
   }
 
+  // Retorna la ruta del home según el rol
+  getHomeRoute(): string {
+    switch(this.rol) {
+      case 'USUARIO':
+        return '/usuario/homeusuario';
+      case 'ASESOR':
+        return '/asesor/homeasesor';
+      case 'ADMIN':
+        return '';
+      default:
+        return '/'; // Landing
+    }
+  }
+
+  // Controla el click en el logo
+  navigateToHome(event: Event): void {
+    if (this.rol === 'ADMIN') {
+      event.preventDefault(); // Bloquear navegación para admin
+      console.log('Admin no puede navegar desde el logo');
+    }
+  }
+
+  // Cerrar sesión
+  cerrarSesion(): void {
+    console.log('Cerrando sesión...');
+    this.authService.logout();
+    this.rol = null;
+    this.router.navigate(['/home']); // Llévalo al login o inicio
+  }
 }
