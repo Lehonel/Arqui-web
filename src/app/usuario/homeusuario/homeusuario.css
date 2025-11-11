@@ -1,0 +1,244 @@
+/* ======== Sección Principal ======== */
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding: 2rem 5%;
+  background-color: #f9fafb;
+}
+
+/* ======== Contenedor Principal ======== */
+.main-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.main-container-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.image-container {
+  flex: 1 1 45%;
+}
+
+.image-container img {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  object-fit: cover;
+}
+
+.content-container {
+  flex: 1 1 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-content {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.card-content-title h1 {
+  font-size: 2rem;
+  color: #1a202c;
+  margin-bottom: 1rem;
+}
+
+.card-content-title h2 {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #4a5568;
+  margin-bottom: 1.5rem;
+}
+
+.card-content-description {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  color: #2d3748;
+}
+
+.card-content-button {
+  text-align: center;
+}
+
+.card-content-button-action {
+  background-color: #2563eb;
+  color: white;
+  font-weight: 500;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.card-content-button-action:hover {
+  background-color: #1d4ed8;
+}
+
+/* ======== Expertos Recomendados ======== */
+.recommended-experts {
+  text-align: center;
+}
+
+.recommended-experts h2 {
+  font-size: 1.8rem;
+  color: #1a202c;
+  margin-bottom: 2rem;
+}
+
+.recommended-experts-container-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.card {
+  background-color: white;
+  border-radius: 12px;
+  width: 260px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card-image img {
+  width: 100%;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-expert-info {
+  padding: 1rem;
+  text-align: left;
+}
+
+.card-expert-info-name {
+  display: block;
+  font-weight: 600;
+  color: #111827;
+  font-size: 1.1rem;
+}
+
+.card-expert-info-profession {
+  display: block;
+  color: #4b5563;
+  margin-bottom: 0.5rem;
+}
+
+.card-expert-info-quote {
+  display: block;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+
+.star-container img {
+  width: 18px;
+}
+
+.card-expert-button {
+  text-align: center;
+  padding: 1rem;
+}
+
+.card-expert-button-action {
+  background-color: #2563eb;
+  color: white;
+  font-weight: 500;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.card-expert-button-action:hover {
+  background-color: #1d4ed8;
+}
+
+/* ======== Categorías ======== */
+.categories-container {
+  text-align: center;
+}
+
+.categories-container h2 {
+  font-size: 1.8rem;
+  color: #1a202c;
+  margin-bottom: 2rem;
+}
+
+.categories-container-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.category-card {
+  background-color: white;
+  border-radius: 12px;
+  width: 280px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+}
+
+.category-head-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.category-card-title h3 {
+  margin: 1rem 0 0.5rem;
+  font-size: 1.2rem;
+  color: #1e3a8a;
+}
+
+.category-card-description {
+  padding: 0 1rem 1.5rem;
+  font-size: 0.95rem;
+  color: #4b5563;
+}
+
+/* ======== Responsividad ======== */
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .image-container,
+  .content-container {
+    flex: 1 1 100%;
+  }
+
+  .recommended-experts-container-cards,
+  .categories-container-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+}

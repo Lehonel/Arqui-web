@@ -32,7 +32,7 @@ export const routes: Routes = [
   { path: 'unete', component: UneteComponent },
   { path: 'registro', component: Registro },
   { path: 'recuperar', component: Recuperar },
-
+  { path: 'homeusuario', component: Homeusuario},
 
 
   { path: 'usuario/homeusuario', component: Homeusuario, canActivate: [AuthGuard] },
@@ -50,6 +50,11 @@ export const routes: Routes = [
   { path: 'administrador/tabla-clientes', component: TablaClientesComponent, canActivate: [AuthGuard] },
   { path: 'administrador/tabla-asesorias', component: TablaAsesoriasComponent, canActivate: [AuthGuard] },
 
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: Home},
+  { path: 'homeasesor', component: Homeasesor },
 
   { path: '**', redirectTo: '' }
+
+
 ];

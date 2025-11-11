@@ -1,8 +1,12 @@
 import { Component } from '@angular/core';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-homeasesor',
-  imports: [],
+  standalone: true,
+  imports: [
+    RouterLink
+  ],
   templateUrl: './homeasesor.html',
   styleUrl: './homeasesor.css',
 })
