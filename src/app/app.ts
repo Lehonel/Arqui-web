@@ -38,10 +38,21 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     // Inicializar rol desde localStorage si existe
     const rolGuardado = localStorage.getItem('rol');
+    const token = localStorage.getItem('token');
     const currentUrl = this.router.url;
     if (rolGuardado) {
       this.rol = rolGuardado;
       console.log('Rol cargado en ngOnInit:', this.rol);
+    }
+
+    if (token && (currentUrl === '/' || currentUrl === '/home')) {
+      if (rolGuardado === 'USUARIO') {
+        this.router.navigate(['/usuario/homeusuario']);
+      } else if (rolGuardado === 'ASESOR') {
+        this.router.navigate(['/asesor/homeasesor']);
+      } else if (rolGuardado === 'ADMIN') {
+        this.router.navigate(['/administrador/tabla-clientes']);
+      }
     }
   }
 

@@ -1,0 +1,281 @@
+/* ======== GENERAL ======== */
+:host {
+  display: block;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f7fafd;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* ======== HERO / FRASE ======== */
+.frase-container {
+  background: linear-gradient(to right, #000428, #004e92);
+  padding: 2rem 0 4rem 0;
+  min-height: 30vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.frase-container h1 {
+  color: #fff;
+  font-size: 2.8rem;
+  width: 100%;
+  text-align: center;
+  line-height: 1.3;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  font-weight: 500;
+  padding: 1rem 1rem 2rem 1rem;
+  margin-bottom: 0;
+}
+
+/* ======== CAROUSEL ======== */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  overflow: hidden;
+  background: transparent;
+}
+
+.carousel-wrapper {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  padding: 2rem 4rem;
+  box-sizing: border-box;
+}
+
+.carousel-content {
+  display: flex;
+  gap: 1.5rem;
+  transition: transform 0.3s ease;
+  align-items: stretch; /* todas las tarjetas del carrusel igual altura */
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #3B4DBE;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  z-index: 10;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(59, 77, 190, 0.3);
+}
+
+.carousel-btn:hover {
+  background: #1D3557;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn-prev {
+  left: 10px;
+}
+
+.carousel-btn-next {
+  right: 10px;
+}
+
+/* ======== ASESORÍA CARD ======== */
+.asesoria-card {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex: 0 0 280px;   /* ancho base de la tarjeta */
+  min-height: 420px;  /* altura mínima consistente */
+}
+
+.asesoria-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* ======== IMAGEN ======== */
+.card-image {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* mantiene proporción */
+  overflow: hidden;
+  position: relative;
+  background-color: #f3f3f3;
+  flex-shrink: 0;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: brightness(0.97);
+  will-change: transform, filter;
+}
+
+.asesoria-card:hover .card-image img {
+  transform: scale(1.05);
+  filter: brightness(1);
+}
+
+/* ======== CONTENIDO ======== */
+.asesoria-card-content {
+  padding: 0.8rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.asesoria-card-content h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #353535;
+  margin-bottom: 0.2rem;
+}
+
+.card-description {
+  font-size: 0.8rem;   /* más pequeño */
+  color: #908C8C;       /* color del texto */
+  line-height: 1;
+  margin-bottom: 0.8rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+}
+
+.card-asesor {
+  font-size: 0.90rem;
+  color: #3B4DBE;
+}
+
+.card-price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1D3557;
+  margin-bottom: 0.4rem;
+}
+
+.card-button {
+  width: 100%;
+  background: linear-gradient(135deg, #3B4DBE, #1D3557);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.card-button:hover {
+  background: linear-gradient(135deg, #1D3557, #0f1b2c);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 77, 190, 0.3);
+}
+
+/* ======== CATEGORÍAS ======== */
+.asesorias-content-wrapper {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem 5rem;
+  background-color: #f0f0f0;
+}
+
+.asesorias-categories {
+  width: 20%;
+}
+
+.category-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.category-list li {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  border-bottom: 1px solid #e0e0e0;
+  transition: background-color 0.2s ease;
+}
+
+.category-list li.active {
+  background-color: #e3e3ff;
+  font-weight: 600;
+  color: #3B4DBE;
+}
+
+/* ======== CATÁLOGO ======== */
+.asesorias-catalog {
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ======== RESPONSIVE ======== */
+@media (max-width: 1200px) {
+  .asesoria-card {
+    flex: 0 0 260px;
+    min-height: 400px;
+  }
+  .carousel-wrapper {
+    padding: 0 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .asesorias-content-wrapper {
+    flex-direction: column;
+    padding: 2rem;
+  }
+
+  .asesorias-categories,
+  .asesorias-catalog {
+    width: 100%;
+  }
+
+  .carousel-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+
+  .asesoria-card {
+    flex: 0 0 240px;
+    min-height: 380px;
+  }
+}
+
+@media (max-width: 480px) {
+  .asesoria-card {
+    flex: 0 0 220px;
+    min-height: 360px;
+  }
+
+  .carousel-wrapper {
+    padding: 0 1.5rem;
+  }
+
+  .card-image {
+    aspect-ratio: 4 / 3;
+  }
+}

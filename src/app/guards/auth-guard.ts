@@ -12,6 +12,7 @@ export class AuthGuard implements CanActivate {
     const rol = localStorage.getItem('rol');
     const ruta = state.url;
 
+
     // No hay token → no puede entrar
     if (!token) {
       this.router.navigate(['/']);
