@@ -28,10 +28,6 @@ export class AuthService {
     return this.http.post(`${this.apiUrlAsesor}/registrar`, datos);
   }
 
-  registrarAdministrador(datos: any): Observable<any> {
-    return this.http.post(`${this.apiUrlAdministrador}/registrar`, datos);
-  }
-
   login(credenciales: any): Observable<{ jwt: string; roles: string[] }> {
     return this.http.post<{ jwt: string; roles: string[] }>(
       'http://localhost:8080/api/authenticate',

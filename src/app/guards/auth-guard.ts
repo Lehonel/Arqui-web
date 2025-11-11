@@ -19,7 +19,7 @@ export class AuthGuard implements CanActivate {
     }
 
     // Reglas por rol
-    if (rol === 'ADMIN' && ruta.startsWith('/administrador/tabla-clientes')) return true;
+    if (rol === 'ADMIN' && ruta.startsWith('/administrador')) return true;
     if (rol === 'ASESOR' && ruta.startsWith('/asesor')) return true;
     if (rol === 'USUARIO' && ruta.startsWith('/usuario')) return true;
 
