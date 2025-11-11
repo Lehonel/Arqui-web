@@ -25,6 +25,31 @@
 }
 
 /* Navbar */
+.navbar{
+    width: 25px;
+    height: 25px;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+}
+
+.header-logo img {
+    width: auto;
+    height: 60px;
+    display: block;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
+    background-color: #fff;
+    height: 70px;
+}
 
 .header-nav ul {
   display: flex;
