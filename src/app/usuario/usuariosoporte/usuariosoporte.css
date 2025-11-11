@@ -1,0 +1,90 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 40px;
+}
+
+.faq, .contact-support, .knowledge-base {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+  margin: 0 0 20px;
+}
+
+/* Scoped list styles for support page content */
+.faq ul, .knowledge-base ul {
+  list-style: none;
+  padding: 0;
+}
+
+
+.help{
+  color: #457B9D;
+  font-weight: lighter;
+  margin-bottom: 10px;}
+
+.faq ul li, .knowledge-base ul li {
+  margin-bottom: 15px;
+
+}
+.faq ul li a, .knowledge-base ul li a {
+  text-decoration: none;
+  color: #457B9D;
+}
+
+
+
+
+.faq ul li a:hover, .knowledge-base ul li a:hover {
+  text-decoration: underline;
+}
+
+
+.faq li {
+  margin-bottom: 25px;
+}
+
+.faq li p {
+  margin: 5px 0 0 20px;
+  font-size: 0.9em;
+  color: #666;
+}
+
+.btn {
+  display: inline-block;
+  width: 100%;
+  padding: 15px;
+  margin-top: 10px;
+  text-align: center;
+  color: white;
+  background-color: #457B9D;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  max-width: max-content;
+}
+.btn:hover {
+  background-color: #5362eb;
+}

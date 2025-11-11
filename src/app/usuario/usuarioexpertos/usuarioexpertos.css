@@ -1,0 +1,173 @@
+.expertos-container {
+  background-color: #0c0931;
+  color: white;
+  min-height: 100vh;
+  padding: 40px;
+  text-align: center;
+}
+
+.titulo {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.subtitulo {
+  color: #ccc;
+  margin-bottom: 30px;
+}
+
+.categorias {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.categorias button {
+  background: transparent;
+  border: 1px solid #888;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.categorias button:hover,
+.categorias button.activo {
+  background-color: white;
+  color: #0c0931;
+}
+
+.contenido-principal {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+/* Filtros */
+.filtros {
+  width: 220px;
+  background-color: #1b1748;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: left;
+}
+
+.filtros h3 {
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+}
+
+.filtro-grupo {
+  margin-bottom: 25px;
+}
+
+.filtro-grupo h4 {
+  margin-bottom: 10px;
+  color: #aab4ff;
+}
+
+.filtro-grupo ul {
+  list-style: none;
+  padding: 0;
+}
+
+.filtro-grupo button {
+  background: none;
+  color: #ddd;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+.filtro-grupo button:hover {
+  color: #4cafef;
+}
+
+/* Tarjetas de Expertos */
+.lista-expertos {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 25px;
+}
+
+.tarjeta-experto {
+  background-color: white;
+  color: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.tarjeta-experto:hover {
+  transform: scale(1.04);
+}
+
+.imagen-experto {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.info-experto {
+  padding: 15px;
+}
+
+.especialidad {
+  color: #555;
+  font-weight: 500;
+}
+
+.descripcion {
+  color: #777;
+  font-style: italic;
+  font-size: 0.9rem;
+  margin: 10px 0;
+}
+
+.estrellas {
+  color: #ffcc00;
+  font-size: 1.2rem;
+}
+
+.btn-perfil {
+  background-color: #3f51b5;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-perfil:hover {
+  background-color: #2c3e9d;
+}
+
+.filtro-grupo select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  background-color: #292565;
+  color: white;
+  border: 1px solid #555;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.filtro-grupo select:hover {
+  background-color: #3b3680;
+}
+
+.filtro-grupo select option {
+  background: #1b1748;
+  color: white;
+}
