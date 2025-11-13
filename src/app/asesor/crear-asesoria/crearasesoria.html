@@ -1,0 +1,116 @@
+<main class="crear-asesoria-page">
+  <header class="hero-top">
+    <h1>FORMULARIO PARA CREAR ASESORÍA</h1>
+  </header>
+
+  <section class="form-wrap">
+    <div class="form-card">
+      <!-- Vista previa de imagen desde URL -->
+      <div class="upload-area">
+        <div class="upload-inner">
+          <div class="upload-text">VISTA PREVIA DE IMAGEN</div>
+          <img
+            *ngIf="asesoria.urlimg"
+            [src]="asesoria.urlimg"
+            class="preview-img"
+            alt="Vista previa"
+          />
+        </div>
+      </div>
+
+      <!-- FORMULARIO -->
+      <form class="crear-asesoria-form" (ngSubmit)="registrarAsesoria()" autocomplete="off">
+        <label class="lbl">URL de la Imagen:</label>
+        <input
+          type="text"
+          [(ngModel)]="asesoria.urlimg"
+          name="urlimg"
+          placeholder="https://..."
+          class="input"
+        />
+
+        <label class="lbl">Nombre:</label>
+        <input
+          type="text"
+          [(ngModel)]="asesoria.nombreasesoria"
+          name="nombreasesoria"
+          required
+          class="input"
+        />
+
+        <label class="lbl">Precio de la Asesoría (S/):</label>
+        <input
+          type="text"
+          inputmode="decimal"
+          pattern="[0-9]*[.,]?[0-9]*"
+          [(ngModel)]="asesoria.costoasesoria"
+          name="costoasesoria"
+          required
+          class="input"
+        />
+
+        <label class="lbl">Categoría:</label>
+        <input
+          type="text"
+          [(ngModel)]="asesoria.categoria"
+          name="categoria"
+          class="input"
+        />
+
+        <label class="lbl">Descripción:</label>
+        <textarea
+          [(ngModel)]="asesoria.descripcionasesoria"
+          name="descripcionasesoria"
+          rows="3"
+          class="input"
+        ></textarea>
+
+        <label class="lbl">Fecha de la Asesoría:</label>
+        <input
+          type="date"
+          [(ngModel)]="asesoria.fechasesoria"
+          name="fechasesoria"
+          class="input"
+        />
+
+        <!-- TEMAS -->
+        <label class="lbl">Temas:</label>
+        <div class="temas-container">
+          <div class="tema-row" *ngFor="let tema of temas; let i = index">
+            <input
+              type="text"
+              [(ngModel)]="tema.nombreTema"
+              name="temaNombre{{ i }}"
+              placeholder="Nombre del tema"
+              class="tema-input"
+            />
+            <input
+              type="text"
+              [(ngModel)]="tema.descripcionTema"
+              name="temaDesc{{ i }}"
+              placeholder="Descripción del tema"
+              class="tema-input"
+            />
+            <button
+              type="button"
+              class="btn-eliminar"
+              (click)="eliminarTema(i)"
+              title="Eliminar tema"
+            >
+              ✕
+            </button>
+          </div>
+
+          <button type="button" class="btn-agregar" (click)="agregarTema()">
+            <span>Agregar Tema</span>
+            <span class="plus-small">+</span>
+          </button>
+        </div>
+
+        <div class="actions">
+          <button type="submit" class="btn-crear">Crear Asesoría</button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>

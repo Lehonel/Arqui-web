@@ -1,6 +1,7 @@
 import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-asesorasesorias',
@@ -10,6 +11,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./asesorasesorias.css']
 })
 export class Asesorasesorias implements AfterViewInit, OnInit {
+
+  mostrarFormulario = false;
 
   currentSlide = 0;
   cardsPerView = 3;
@@ -22,21 +25,67 @@ export class Asesorasesorias implements AfterViewInit, OnInit {
   asesoriasFiltradas: any[] = [];
   asesoriasRecomendadas: any[] = [];
 
-  constructor(private http: HttpClient) {}
+  loading = true;
+  error: string | null = null;
+
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
-    this.cargarAsesorias();
+    this.cargarAsesoriasPorAsesor();
   }
 
-  cargarAsesorias(): void {
+  private safeParseJwtPayload(token: string | null): any | null {
+    if (!token) return null;
+    try {
+      const parts = token.split('.');
+      if (parts.length < 2) return null;
+      return JSON.parse(atob(parts[1]));
+    } catch {
+      return null;
+    }
+  }
+
+  private fixEncoding(text: string): string {
+    return text
+      .replace(/Ã¡/g, 'á')
+      .replace(/Ã©/g, 'é')
+      .replace(/Ã­/g, 'í')
+      .replace(/Ã³/g, 'ó')
+      .replace(/Ãº/g, 'ú')
+      .replace(/Ã±/g, 'ñ')
+      .replace(/Ã/g, 'í');
+  }
+
+  cargarAsesoriasPorAsesor(): void {
+    this.loading = true;
+    this.error = null;
+
     this.http.get<any[]>('http://localhost:8080/api/skillink/asesoria/listar').subscribe({
       next: (data) => {
-        this.asesorias = data;
+        const token = localStorage.getItem('token');
+        const rol = localStorage.getItem('rol');
+        let resultado = data || [];
+
+        if (rol === 'ASESOR' && token) {
+          const payload = this.safeParseJwtPayload(token);
+          let nombreToken = (payload?.sub || '').trim();
+          nombreToken = this.fixEncoding(nombreToken).toLowerCase();
+
+          resultado = (data || []).filter(a =>
+            this.fixEncoding(a.asesor?.nombreasesor || '').trim().toLowerCase() === nombreToken
+          );
+        }
+
+        this.asesorias = resultado;
         this.asesoriasFiltradas = [...this.asesorias];
         this.asesoriasRecomendadas = this.asesorias.slice(0, 12);
         setTimeout(() => this.updateCardsPerView(), 0);
+        this.loading = false;
       },
-      error: (err) => console.error('Error al listar asesorías:', err)
+      error: () => {
+        this.error = 'No se pudieron cargar las asesorías.';
+        this.loading = false;
+      }
     });
   }
 
@@ -45,10 +94,11 @@ export class Asesorasesorias implements AfterViewInit, OnInit {
     if (categoria === 'Todos') {
       this.asesoriasFiltradas = [...this.asesorias];
     } else {
-      this.asesoriasFiltradas = this.asesorias.filter(a => a.asesor.especialidadasesor === categoria);
+      this.asesoriasFiltradas = this.asesorias.filter(a => a.asesor?.especialidadasesor === categoria);
     }
     this.currentSlide = 0;
   }
+
 
   updateCardsPerView(): void {
     const container = document.querySelector('.carousel-wrapper') as HTMLElement;
@@ -83,4 +133,12 @@ export class Asesorasesorias implements AfterViewInit, OnInit {
     setTimeout(() => this.updateCardsPerView(), 0);
     window.addEventListener('resize', () => this.updateCardsPerView());
   }
+
+  abrirFormularioCrear(): void {
+    this.router.navigate(['/asesor/crear-asesoria']);
+  }
+
+
+
 }
+

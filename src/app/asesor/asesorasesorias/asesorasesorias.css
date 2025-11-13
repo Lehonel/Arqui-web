@@ -279,3 +279,29 @@
     aspect-ratio: 4 / 3;
   }
 }
+
+.titulo-con-boton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto 1rem auto;
+}
+
+.btn-crear {
+  background: #3B4DBE;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-crear:hover {
+  background: #1D3557;
+  transform: scale(1.05);
+}
+

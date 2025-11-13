@@ -5,7 +5,6 @@ import {RouterLink} from '@angular/router';
   selector: 'app-homeasesor',
   standalone: true,
   imports: [
-    RouterLink
   ],
   templateUrl: './homeasesor.html',
   styleUrl: './homeasesor.css',
