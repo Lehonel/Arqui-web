@@ -25,7 +25,9 @@
                 <div class="card-price">
                   <span class="price">S/. {{ asesoria.costoasesoria }}.00</span>
                 </div>
-                <button class="card-button">Ver Asesoría</button>
+                <button class="card-button" [routerLink]="['/verasesoria', asesoria.idasesoria]">
+                  Ver Asesoría
+                </button>
               </div>
             </div>
           </div>
@@ -62,7 +64,9 @@
             <div class="card-price">
               <span class="price">S/. {{ asesoria.costoasesoria }}.00</span>
             </div>
-            <button class="card-button">Ver Asesoría</button>
+            <button class="card-button" [routerLink]="['/verasesoria', asesoria.idasesoria]">
+              Ver Asesoría
+            </button>
           </div>
         </div>
       </div>

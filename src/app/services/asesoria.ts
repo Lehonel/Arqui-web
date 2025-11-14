@@ -8,6 +8,8 @@ export interface Asesoria {
   descripcionasesoria: string;
   costoasesoria: number;
   fechasesoria: string;
+  cantidadresenhas: string;
+  cantidadestrellas: number;
   urlimg: string;
   asesor: {
     idasesor: number;

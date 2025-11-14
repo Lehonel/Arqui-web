@@ -19,6 +19,7 @@ import {TablaAsesoresComponent} from './administrador/tabla-asesores/tabla-aseso
 import {TablaClientesComponent} from './administrador/tabla-clientes/tabla-clientes';
 import {TablaAsesoriasComponent} from './administrador/tabla-asesorias/tabla-asesorias';
 import { AuthGuard } from './guards/auth-guard';
+import {VerAsesoria} from './ver-asesoria/ver-asesoria';
 
 
 
@@ -33,7 +34,7 @@ export const routes: Routes = [
   { path: 'registro', component: Registro },
   { path: 'recuperar', component: Recuperar },
   { path: 'homeusuario', component: Homeusuario},
-
+  { path: 'verasesoria/:idasesoria', component: VerAsesoria },
 
   { path: 'usuario/homeusuario', component: Homeusuario, canActivate: [AuthGuard] },
   { path: 'usuario/usuarioexpertos', component: Usuarioexpertos, canActivate: [AuthGuard] },

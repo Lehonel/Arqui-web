@@ -1,0 +1,97 @@
+<main class="ver-asesoria-container" *ngIf="asesoria as v">
+
+  <!-- HEADER -->
+  <header class="header-section">
+    <h1 class="titulo">{{ v.asesoria.nombreasesoria }}</h1>
+    <p class="subtitulo">
+      El curso incluye contenido, temario, asesor experto y reseñas reales.
+    </p>
+  </header>
+
+  <!-- CONTENEDOR PRINCIPAL -->
+  <div class="content-layout">
+
+    <!-- COLUMNA IZQUIERDA -->
+    <div class="left">
+
+      <!-- IMAGEN PRINCIPAL -->
+      <div class="image-box">
+        <img
+          class="asesoria-img"
+          [src]="'http://localhost:8080/' + v.asesoria.urlimg"
+          alt="Imagen de la asesoría"
+        />
+      </div>
+
+      <!-- DESCRIPCIÓN -->
+      <section class="section">
+        <h2>Descripción</h2>
+        <p>{{ v.asesoria.descripcionasesoria}}</p>
+      </section>
+
+      <!-- TEMARIO -->
+      <section class="section">
+        <h2>Contenido del Curso</h2>
+        <ul *ngIf="v.temasAsesoria && v.temasAsesoria.length > 0; else sinTemas">
+          <li *ngFor="let t of v.temasAsesoria" class="tema-item">
+            <h3>{{ t.nombreTema }}</h3>
+            <p>{{ t.descripcionTema }}</p>
+          </li>
+        </ul>
+        <ng-template #sinTemas>
+          <p>No hay temas registrados para esta asesoría.</p>
+        </ng-template>
+      </section>
+
+      <!-- RESEÑAS -->
+      <section class="section">
+        <h2>Reseñas</h2>
+
+        <div *ngIf="v.resenhas && v.resenhas.length > 0; else sinResenhas">
+          <div *ngFor="let r of v.resenhas" class="review-card">
+
+            <div class="review-header">
+              <strong>{{ r.cliente.nombrecliente }}</strong>
+              <span class="review-stars">⭐ {{ r.puntajeresenha }}</span>
+            </div>
+
+            <p class="review-text">{{ r.descripcionresenha }}</p>
+          </div>
+        </div>
+
+        <ng-template #sinResenhas>
+          <p>No hay reseñas aún.</p>
+        </ng-template>
+      </section>
+
+    </div>
+
+    <!-- COLUMNA DERECHA (PRECIO + ASESOR) -->
+    <aside class="right">
+
+      <!-- PRECIO -->
+      <div class="price-box">
+        <h2>Precio</h2>
+        <p class="precio">S/. {{ v.asesoria.costoasesoria }}.00</p>
+        <button class="btn-comprar">Reservar Ahora</button>
+      </div>
+
+      <!-- ASESOR -->
+      <section class="section asesor-section" *ngIf="v.asesoria.asesor as a">
+        <h2>Sobre el Asesor</h2>
+
+        <div class="asesor-card">
+          <div class="asesor-info">
+            <h3>{{ a.nombreasesor }}</h3>
+            <p class="asesor-email"> Correo: {{ a.correoasesor }}</p>
+            <p class="asesor-tel"> Telefono: {{ a.telefonoasesor }}</p>
+            <p class="asesor-desc"> Especialidad: {{ a.especialidadasesor }}</p>
+          </div>
+        </div>
+      </section>
+
+    </aside>
+
+  </div>
+
+</main>

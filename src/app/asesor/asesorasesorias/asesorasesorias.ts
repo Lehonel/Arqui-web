@@ -1,13 +1,18 @@
 import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import {VerAsesoria} from '../../ver-asesoria/ver-asesoria';
+import {AsesoriaService} from '../../services/asesoria';
+import {Router, RouterLink} from '@angular/router';
+
 
 @Component({
   selector: 'app-asesorasesorias',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './asesorasesorias.html',
   styleUrls: ['./asesorasesorias.css']
+
 })
 export class Asesorasesorias implements AfterViewInit, OnInit {
 
@@ -22,7 +27,7 @@ export class Asesorasesorias implements AfterViewInit, OnInit {
   asesoriasFiltradas: any[] = [];
   asesoriasRecomendadas: any[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private asesoriaService: AsesoriaService, private router: Router) {}
 
   ngOnInit(): void {
     this.cargarAsesorias();
@@ -84,3 +89,4 @@ export class Asesorasesorias implements AfterViewInit, OnInit {
     window.addEventListener('resize', () => this.updateCardsPerView());
   }
 }
+

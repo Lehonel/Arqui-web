@@ -1,15 +1,17 @@
 import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AsesoriaService, Asesoria } from '../services/asesoria';
+import {Router, RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-asesorias',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './asesorias.html',
   styleUrls: ['./asesorias.css']
 })
 export class Asesorias implements AfterViewInit, OnInit {
+
 
   // Carrusel
   currentSlide = 0;
@@ -25,7 +27,9 @@ export class Asesorias implements AfterViewInit, OnInit {
   asesoriasFiltradas: Asesoria[] = [];
   asesoriasRecomendadas: Asesoria[] = [];
 
-  constructor(private asesoriaService: AsesoriaService) {}
+
+  constructor(private asesoriaService: AsesoriaService, private router: Router) {}
+
 
   ngOnInit(): void {
     this.cargarAsesorias();
@@ -98,6 +102,10 @@ export class Asesorias implements AfterViewInit, OnInit {
     if (halfStar) stars.push('fa-solid fa-star-half-stroke');
     while (stars.length < 5) stars.push('fa-regular fa-star');
     return stars;
+  }
+
+  VerAsesoria(idasesoria: number) {
+    this.router.navigate(['/verasesoria', idasesoria]);
   }
 
   ngAfterViewInit(): void {
