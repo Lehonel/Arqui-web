@@ -39,4 +39,8 @@ export class VerAsesoria implements OnInit {
       }
     });
   }
+  //estrellas dinamicas
+  getArray(n: number): any[] {
+    return Array(n);
+  }
 }

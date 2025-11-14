@@ -79,6 +79,10 @@ export class Asesorias implements AfterViewInit, OnInit {
     if (this.cardWidth === 0) return 'translateX(0)';
     return `translateX(-${this.currentSlide * this.cardWidth}px)`;
   }
+  //estrellas dinamicas
+  getArray(n: number): any[] {
+    return Array(n);
+  }
 
   // Navegación carrusel
   nextSlide(): void {

@@ -102,6 +102,12 @@ body, .ver-asesoria-container {
   color: #f5c518;
 }
 
+.card-estrellas{
+  color: #af9315;
+  margin-right: 0.5rem;
+  font: lighter 0.8rem "Segoe UI", Arial, sans-serif;
+}
+
 /* COLUMNA DERECHA */
 .right {
   flex: 1;

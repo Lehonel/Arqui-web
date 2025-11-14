@@ -52,7 +52,11 @@
 
             <div class="review-header">
               <strong>{{ r.cliente.nombrecliente }}</strong>
-              <span class="review-stars">⭐ {{ r.puntajeresenha }}</span>
+              <p class="card-estrellas">
+                <ng-container *ngFor="let _ of getArray(r.puntajeresenha)">
+                  ⭐
+                </ng-container> {{r.puntajeresenha}}
+              </p>
             </div>
 
             <p class="review-text">{{ r.descripcionresenha }}</p>

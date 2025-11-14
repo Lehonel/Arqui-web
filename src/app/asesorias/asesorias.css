@@ -8,6 +8,8 @@
   padding: 0;
 }
 
+
+
 /* ======== HERO / FRASE ======== */
 .frase-container {
   background: linear-gradient(to right, #000428, #004e92);
@@ -153,7 +155,7 @@
   font-size: 0.8rem;   /* más pequeño */
   color: #908C8C;       /* color del texto */
   line-height: 1;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.2rem;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -170,7 +172,7 @@
   font-size: 1.2rem;
   font-weight: 700;
   color: #1D3557;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.3rem;
 }
 
 .card-button {
@@ -208,6 +210,22 @@
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.card-especifications{
+  display: flex;
+  padding: 0.2rem 0.1rem;
+}
+
+.card-estrellas{
+  color: #af9315;
+  margin-right: 0.5rem;
+  font: lighter 0.8rem "Segoe UI", Arial, sans-serif;
+}
+
+.card-resenhas{
+  color: #908C8C;
+  font: lighter 0.8rem "Segoe UI", Arial, sans-serif;
 }
 
 .category-list li {

@@ -24,6 +24,14 @@
                 <h3>{{ asesoria.nombreasesoria }}</h3>
                 <p class="card-asesor">Asesor: {{ asesoria.asesor.nombreasesor }}</p>
                 <p class="card-description">{{ asesoria.descripcionasesoria }}</p>
+                <div class="card-especifications">
+                  <p class="card-estrellas">
+                    <ng-container *ngFor="let _ of getArray(asesoria.cantidadestrellas)">
+                      ⭐
+                    </ng-container> {{asesoria.cantidadestrellas}}
+                  </p>
+                  <p class = "card-resenhas">({{asesoria.cantidadresenhas}} reseñas)</p>
+                </div>
                 <div class="card-price">
                   <span class="price">S/. {{ asesoria.costoasesoria }}.00</span>
                 </div>
@@ -69,6 +77,14 @@
             <h3>{{ asesoria.nombreasesoria }}</h3>
             <p class="card-asesor">Asesor: {{ asesoria.asesor.nombreasesor }}</p>
             <p class="card-description">{{ asesoria.descripcionasesoria }}</p>
+            <div class="card-especifications">
+              <p class="card-estrellas">
+                <ng-container *ngFor="let _ of getArray(asesoria.cantidadestrellas)">
+                  ⭐
+                </ng-container> {{asesoria.cantidadestrellas}}
+              </p>
+              <p class = "card-resenhas">({{asesoria.cantidadresenhas}} reseñas)</p>
+            </div>
             <div class="card-price">
               <span class="price">S/. {{ asesoria.costoasesoria }}.00</span>
             </div>
