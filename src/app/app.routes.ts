@@ -19,11 +19,11 @@ import {TablaAsesoresComponent} from './administrador/tabla-asesores/tabla-aseso
 import {TablaClientesComponent} from './administrador/tabla-clientes/tabla-clientes';
 import {TablaAsesoriasComponent} from './administrador/tabla-asesorias/tabla-asesorias';
 import { AuthGuard } from './guards/auth-guard';
-<<<<<<< HEAD
+
 import {VerAsesoria} from './ver-asesoria/ver-asesoria';
-=======
+
 import { CrearAsesoria } from './asesor/crear-asesoria/crearasesoria';
->>>>>>> 0f2013e50ef98290680ca87aa3a411a0dfd4942f
+
 
 
 

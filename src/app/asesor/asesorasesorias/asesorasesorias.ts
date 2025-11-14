@@ -1,14 +1,13 @@
 import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-<<<<<<< HEAD
+
 import {VerAsesoria} from '../../ver-asesoria/ver-asesoria';
 import {AsesoriaService} from '../../services/asesoria';
+
+
 import {Router, RouterLink} from '@angular/router';
 
-=======
-import { Router } from '@angular/router';
->>>>>>> 0f2013e50ef98290680ca87aa3a411a0dfd4942f
 
 @Component({
   selector: 'app-asesorasesorias',
@@ -33,14 +32,13 @@ export class Asesorasesorias implements AfterViewInit, OnInit {
   asesoriasFiltradas: any[] = [];
   asesoriasRecomendadas: any[] = [];
 
-<<<<<<< HEAD
   constructor(private http: HttpClient, private asesoriaService: AsesoriaService, private router: Router) {}
-=======
+
   loading = true;
   error: string | null = null;
 
-  constructor(private http: HttpClient, private router: Router) {}
->>>>>>> 0f2013e50ef98290680ca87aa3a411a0dfd4942f
+
+
 
   ngOnInit(): void {
     this.cargarAsesoriasPorAsesor();
