@@ -43,40 +43,5 @@
     </div>
   </section>
 
-<<<<<<< HEAD
-  <section class="asesorias-section">
-    <div class="asesorias-content-wrapper">
-      <aside class="asesorias-categories">
-        <ul class="category-list">
-          <li *ngFor="let cat of categorias"
-              [class.active]="cat === categoriaActiva"
-              (click)="filtrarPorCategoria(cat)">
-            {{ cat }}
-          </li>
-        </ul>
-      </aside>
 
-      <div class="asesorias-catalog">
-        <div class="asesoria-card" *ngFor="let asesoria of asesoriasFiltradas">
-          <div class="card-image">
-            <img [src]="'http://localhost:8080/' + asesoria.urlimg" [alt]="asesoria.nombreasesoria">
-          </div>
-          <div class="asesoria-card-content">
-            <h3>{{ asesoria.nombreasesoria }}</h3>
-            <p class="card-asesor">Asesor: {{ asesoria.asesor.nombreasesor }}</p>
-            <p class="card-description">{{ asesoria.descripcionasesoria }}</p>
-            <div class="card-price">
-              <span class="price">S/. {{ asesoria.costoasesoria }}.00</span>
-            </div>
-            <button class="card-button" [routerLink]="['/verasesoria', asesoria.idasesoria]">
-              Ver Asesoría
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-=======
->>>>>>> 0f2013e50ef98290680ca87aa3a411a0dfd4942f
 </main>
