@@ -4,6 +4,15 @@
     Explora nuestra red de expertos en diversas áreas y encuentra el asesor ideal para tus necesidades.
   </p>
 
+  <div class="buscador">
+    <input
+      type="text"
+      placeholder="Buscar por nombre o especialidad..."
+      [(ngModel)]="terminoBusqueda"
+      (input)="aplicarFiltros()"
+    />
+  </div>
+
   <!-- 🔹 Categorías -->
   <div class="categorias">
     <button

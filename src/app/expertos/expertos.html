@@ -4,6 +4,15 @@
     Explora nuestra red de expertos en diversas áreas y encuentra el asesor ideal para tus necesidades.
   </p>
 
+  <div class="buscador-container">
+    <input
+      type="text"
+      placeholder="Buscar experto o especialidad..."
+      [(ngModel)]="busquedaTexto"
+      (input)="filtrarPorBusqueda()"
+    >
+  </div>
+
   <!-- 🔹 Categorías -->
   <div class="categorias">
     <button
@@ -19,8 +28,6 @@
     <aside class="filtros">
       <h3>Filtros</h3>
 
-      <!-- Filtro por Precio -->
-      <!-- Filtro por Precio -->
       <div class="filtro-grupo">
         <h4>Precios</h4>
         <select #precioSelect (change)="filtrarPorRangoPrecio(precioSelect.value)">

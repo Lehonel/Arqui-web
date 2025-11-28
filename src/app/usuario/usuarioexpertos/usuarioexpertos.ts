@@ -1,13 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {CartillaAsesor, CartillaAsesorService} from '../../expertos/cartillaasesor.service';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-usuarioexpertos',
   templateUrl: './usuarioexpertos.html',
   styleUrl: './usuarioexpertos.css',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
 })
 export class Usuarioexpertos implements OnInit{
   cartillas: CartillaAsesor[] = [];
@@ -19,6 +20,8 @@ export class Usuarioexpertos implements OnInit{
   rangoPrecio: string = '';
   rangoExperiencia: string = '';
   estrellasFiltro: number | null = null;
+  terminoBusqueda: string = '';
+
 
   constructor(private cartillaService: CartillaAsesorService) {}
 
@@ -59,18 +62,26 @@ export class Usuarioexpertos implements OnInit{
 
   // 🔹 Aplica todos los filtros combinados
   aplicarFiltros(): void {
+    const termino = this.terminoBusqueda.toLowerCase().trim();
+
     this.cartillasFiltradas = this.cartillas.filter(c => {
-      // Filtrar por categoría
+      // 🔎 Filtro por búsqueda
+      const coincideBusqueda =
+        termino === '' ||
+        c.nombrecartillaasesor.toLowerCase().includes(termino) ||
+        c.especialcartillaasesor.toLowerCase().includes(termino);
+
+      // Categoría
       const coincideCategoria =
         this.categoriaActiva === 'Todos' ||
         c.especialcartillaasesor === this.categoriaActiva;
 
-      // Filtrar por estrellas
+      // Estrellas
       const coincideEstrellas =
         this.estrellasFiltro === null ||
         c.estrellascartillaasesor === this.estrellasFiltro;
 
-      // Filtrar por precio
+      // Precio
       let coincidePrecio = true;
       if (this.rangoPrecio) {
         const [min, max] = this.rangoPrecio.split('-').map(Number);
@@ -78,7 +89,7 @@ export class Usuarioexpertos implements OnInit{
           c.preciocartillaasesor >= min && c.preciocartillaasesor <= max;
       }
 
-      // Filtrar por años de experiencia
+      // Experiencia
       let coincideExperiencia = true;
       if (this.rangoExperiencia) {
         const [min, max] = this.rangoExperiencia.split('-').map(Number);
@@ -86,9 +97,16 @@ export class Usuarioexpertos implements OnInit{
         coincideExperiencia = anhos >= min && anhos <= max;
       }
 
-      return coincideCategoria && coincideEstrellas && coincidePrecio && coincideExperiencia;
+      return (
+        coincideBusqueda &&
+        coincideCategoria &&
+        coincideEstrellas &&
+        coincidePrecio &&
+        coincideExperiencia
+      );
     });
   }
+
 
   // 🔹 Helpers
   getStars(estrellas: number): string[] {

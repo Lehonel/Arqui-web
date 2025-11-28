@@ -171,3 +171,32 @@
   background: #1b1748;
   color: white;
 }
+
+/* 🔎 Contenedor del buscador */
+.buscador-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 30px 0;
+}
+
+/* 🔎 Estilo igual que usuarioexpertos */
+.buscador-container input {
+  width: 60%;
+  padding: 12px 18px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: #1b1748;
+  color: white;
+  font-size: 1rem;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.25);
+  transition: 0.25s ease-in-out;
+}
+
+/* Animación al enfocar */
+.buscador-container input:focus {
+  background: #2a2570;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.35);
+  transform: scale(1.02);
+}
