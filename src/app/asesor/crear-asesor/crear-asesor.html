@@ -1,0 +1,118 @@
+<main class="crear-asesor-page">
+  <header class="hero-top">
+    <h1>FORMULARIO PARA CREAR CARTILLA DE ASESOR</h1>
+  </header>
+
+  <!-- Mensaje de error -->
+  <div *ngIf="error" class="alert-error">
+    {{ error }}
+  </div>
+
+  <section class="form-wrap">
+    <div class="form-card">
+      <!-- Vista previa de imagen desde URL -->
+      <div class="upload-area">
+        <div class="upload-inner">
+          <div class="upload-text">VISTA PREVIA DE IMAGEN</div>
+          <img
+            *ngIf="asesor.urlcartillaasesor"
+            [src]="asesor.urlcartillaasesor"
+            class="preview-img"
+            alt="Vista previa"
+          />
+        </div>
+      </div>
+
+      <!-- FORMULARIO -->
+      <form class="crear-asesoria-form" (ngSubmit)="registrarCartilla()" autocomplete="off">
+        <label class="lbl">URL de la Imagen:</label>
+        <input
+          type="text"
+          [(ngModel)]="asesor.urlcartillaasesor"
+          name="urlimg"
+          placeholder="https://..."
+          class="input"
+        />
+
+        <label class="lbl">Nombre: *</label>
+        <input
+          type="text"
+          [(ngModel)]="asesor.nombrecartillaasesor"
+          name="nombreasesoria"
+          required
+          class="input"
+        />
+
+        <label class="lbl">Categoría: *</label>
+        <input
+          type="text"
+          [(ngModel)]="asesor.especialcartillaasesor"
+          name="categoria"
+          required
+          class="input"
+        />
+
+        <label class="lbl">Descripción:</label>
+        <textarea
+          [(ngModel)]="asesor.descripcioncartillaasesor"
+          name="descripcionasesoria"
+          rows="3"
+          class="input"
+        ></textarea>
+
+        <!-- TEMAS -->
+        <label class="lbl">Temas:</label>
+        <div class="temas-container">
+          <div class="tema-row" *ngFor="let tema of temas; let i = index">
+            <input
+              type="text"
+              [(ngModel)]="tema.nombreTema"
+              name="temaNombre{{ i }}"
+              placeholder="Nombre del tema"
+              class="tema-input"
+            />
+            <input
+              type="text"
+              [(ngModel)]="tema.descripcionTema"
+              name="temaDesc{{ i }}"
+              placeholder="Descripción del tema"
+              class="tema-input"
+            />
+            <button
+              type="button"
+              class="btn-eliminar"
+              (click)="eliminarTema(i)"
+              title="Eliminar tema"
+            >
+              ✕
+            </button>
+          </div>
+
+          <button type="button" class="btn-agregar" (click)="agregarTema()">
+            <span>Agregar Tema</span>
+            <span class="plus-small">+</span>
+          </button>
+        </div>
+
+        <div class="actions">
+          <button
+            type="button"
+            class="btn-cancelar"
+            (click)="cancelar()"
+            [disabled]="loading"
+          >
+            Cancelar
+          </button>
+          <button
+            type="submit"
+            class="btn-crear"
+            [disabled]="loading"
+          >
+            <span *ngIf="!loading">Crear Asesor</span>
+            <span *ngIf="loading">Creando...</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>

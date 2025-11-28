@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CartillaAsesorService, CartillaAsesor } from './cartillaasesor.service';
 import {FormsModule} from '@angular/forms';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-expertos',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './expertos.html',
   styleUrls: ['./expertos.css']
 })
@@ -38,7 +39,7 @@ export class Expertos implements OnInit {
     });
   }
 
-  // 🔹 Filtros de selects
+  // Filtros de selects
   filtrarPorRangoPrecio(valor: string): void {
     this.rangoPrecio = valor;
     this.aplicarFiltros();
@@ -59,11 +60,11 @@ export class Expertos implements OnInit {
     this.aplicarFiltros();
   }
 
-  // 🔹 Aplica todos los filtros combinados
+  //  Aplica todos los filtros combinados
   aplicarFiltros(): void {
     this.cartillasFiltradas = this.cartillas.filter(c => {
 
-      // 🔍 Filtrar por búsqueda parcial
+      //  Filtrar por búsqueda parcial
       const texto = this.busquedaTexto.toLowerCase();
 
       const coincideBusqueda =
@@ -105,7 +106,7 @@ export class Expertos implements OnInit {
       );
     });
   }
-  // 🔹 Helpers
+  // Helpers
   getStars(estrellas: number): string[] {
     return Array(5)
       .fill('☆')

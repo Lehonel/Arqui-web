@@ -23,6 +23,8 @@ import { AuthGuard } from './guards/auth-guard';
 import {VerAsesoria} from './ver-asesoria/ver-asesoria';
 
 import { CrearAsesoria } from './asesor/crear-asesoria/crearasesoria';
+import {CrearAsesor} from './asesor/crear-asesor/crear-asesor';
+import {VerAsesor} from './ver-asesor/ver-asesor';
 
 
 
@@ -39,6 +41,7 @@ export const routes: Routes = [
   { path: 'recuperar', component: Recuperar },
   { path: 'homeusuario', component: Homeusuario},
   { path: 'verasesoria/:idasesoria', component: VerAsesoria },
+  { path: 'verasesor/:idcartillaasesor', component: VerAsesor },
 
   { path: 'usuario/homeusuario', component: Homeusuario, canActivate: [AuthGuard] },
   { path: 'usuario/usuarioexpertos', component: Usuarioexpertos, canActivate: [AuthGuard] },
@@ -50,6 +53,8 @@ export const routes: Routes = [
   { path: 'asesor/asesorasesorias', component: Asesorasesorias, canActivate: [AuthGuard] },
   { path: 'asesor/asesorsoporte', component: Asesorsoporte, canActivate: [AuthGuard] },
   { path: 'asesor/crear-asesoria', component: CrearAsesoria, canActivate: [AuthGuard] },
+  { path: 'asesor/crear-asesor', component: CrearAsesor, canActivate: [AuthGuard] },
+
 
 
   { path: 'administrador/tabla-asesores', component: TablaAsesoresComponent, canActivate: [AuthGuard] },

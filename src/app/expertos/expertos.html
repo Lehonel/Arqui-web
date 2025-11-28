@@ -13,7 +13,7 @@
     >
   </div>
 
-  <!-- 🔹 Categorías -->
+  <!-- Categorías -->
   <div class="categorias">
     <button
       *ngFor="let categoria of categorias"
@@ -24,7 +24,7 @@
   </div>
 
   <div class="contenido-principal">
-    <!-- 🔹 Filtros -->
+    <!-- Filtros -->
     <aside class="filtros">
       <h3>Filtros</h3>
 
@@ -65,7 +65,7 @@
       </div>
     </aside>
 
-    <!-- 🔹 Lista de Expertos -->
+    <!-- Lista de Expertos -->
     <section class="lista-expertos">
       <div *ngFor="let c of cartillasFiltradas" class="tarjeta-experto">
         <img [src]="getImagenUrl(c.urlcartillaasesor)" [alt]="c.nombrecartillaasesor" class="imagen-experto" />
@@ -76,7 +76,7 @@
           <div class="estrellas">
             <span *ngFor="let s of getStars(c.estrellascartillaasesor)">{{ s }}</span>
           </div>
-          <button class="btn-perfil">Ver Perfil</button>
+          <button class="btn-perfil" [routerLink]="['/verasesor', c.idcartillaasesor]">Ver Perfil</button>
         </div>
       </div>
     </section>

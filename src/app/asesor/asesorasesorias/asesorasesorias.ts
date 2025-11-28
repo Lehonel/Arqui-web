@@ -147,6 +147,9 @@ export class Asesorasesorias implements AfterViewInit, OnInit {
   abrirFormularioCrear(): void {
     this.router.navigate(['/asesor/crear-asesoria']);
   }
+  abrirFormularioCrearAsesor(): void {
+    this.router.navigate(['/asesor/crear-asesor']);
+  }
 
 
 

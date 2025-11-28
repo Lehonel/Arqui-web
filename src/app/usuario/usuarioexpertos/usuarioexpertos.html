@@ -78,7 +78,7 @@
           <div class="estrellas">
             <span *ngFor="let s of getStars(c.estrellascartillaasesor)">{{ s }}</span>
           </div>
-          <button class="btn-perfil">Ver Perfil</button>
+          <button class="btn-perfil" [routerLink]="['/verasesor', c.idcartillaasesor]">Ver Perfil</button>
         </div>
       </div>
     </section>

@@ -1,0 +1,90 @@
+<main class="ver-asesoria-container" *ngIf="asesor as v">
+
+  <!-- HEADER -->
+  <header class="header-section">
+    <h1 class="titulo">{{ v.nombrecartillaasesor }}</h1>
+    <p class="subtitulo">
+      Perfil profesional del asesor con su especialidad y experiencia.
+    </p>
+  </header>
+
+  <!-- CONTENEDOR PRINCIPAL -->
+  <div class="content-layout">
+
+    <!-- COLUMNA IZQUIERDA -->
+    <div class="left">
+
+      <!-- IMAGEN PRINCIPAL -->
+      <div class="image-box">
+        <img
+          class="asesoria-img"
+          [src]="v.urlcartillaasesor || defaultImg"
+          alt="Foto del asesor"
+        />
+      </div>
+
+      <!-- DESCRIPCIÓN -->
+      <section class="section">
+        <h2>Sobre el Asesor</h2>
+        <p *ngIf="v.descripcioncartillaasesor">{{ v.descripcioncartillaasesor }}</p>
+        <p *ngIf="!v.descripcioncartillaasesor">No hay descripción disponible.</p>
+      </section>
+
+      <!-- ESPECIALIDAD -->
+      <section class="section">
+        <h2>Especialidad</h2>
+        <div class="tema-item">
+          <h3>{{ v.especialcartillaasesor }}</h3>
+          <p>Área de experiencia y conocimiento del asesor</p>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- COLUMNA DERECHA (INFO SOLO) -->
+    <aside class="right">
+
+      <!-- INFORMACIÓN DEL ASESOR -->
+      <section class="section asesor-section">
+        <h2>Información</h2>
+
+        <div class="asesor-card">
+          <div class="asesor-info">
+            <h3>{{ v.nombrecartillaasesor }}</h3>
+
+            <p class="asesor-desc">
+              <strong>Especialidad:</strong> {{ v.especialcartillaasesor }}
+            </p>
+
+            <p class="asesor-desc" *ngIf="v.estrellascartillaasesor">
+              <strong>Calificación:</strong>
+              <span class="card-estrellas">
+                <ng-container *ngFor="let _ of getArray(v.estrellascartillaasesor)">
+                  ⭐
+                </ng-container>
+                {{ v.estrellascartillaasesor }}/5
+              </span>
+            </p>
+
+            <p class="asesor-desc" *ngIf="v.anhoexperienciacartillaasesor">
+              <strong>Experiencia:</strong> {{ v.anhoexperienciacartillaasesor }}
+            </p>
+
+            <p class="asesor-desc" *ngIf="v.preciocartillaasesor">
+              <strong>Precio/hora:</strong> S/. {{ v.preciocartillaasesor }}.00
+            </p>
+
+          </div>
+        </div>
+      </section>
+
+    </aside>
+
+  </div>
+
+</main>
+
+<!-- PLACEHOLDER -->
+<div class="loading-placeholder" *ngIf="!asesor">
+  Cargando información del asesor...
+</div>

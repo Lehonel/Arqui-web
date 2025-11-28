@@ -2,13 +2,14 @@ import {Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {CartillaAsesor, CartillaAsesorService} from '../../expertos/cartillaasesor.service';
 import {FormsModule} from '@angular/forms';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-usuarioexpertos',
   templateUrl: './usuarioexpertos.html',
   styleUrl: './usuarioexpertos.css',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink],
 })
 export class Usuarioexpertos implements OnInit{
   cartillas: CartillaAsesor[] = [];

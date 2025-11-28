@@ -33,7 +33,7 @@ export class CrearAsesoria implements OnInit {
     this.obtenerAsesorLogueado();
   }
 
-  // ✅ Decodifica correctamente el token (maneja acentos)
+  //  Decodifica correctamente el token (maneja acentos)
   private decodeTokenPayload(token: string): any {
     try {
       const base64Url = token.split('.')[1];
@@ -51,7 +51,7 @@ export class CrearAsesoria implements OnInit {
     }
   }
 
-  // ✅ Corrige posibles errores de codificación de caracteres
+  //  Corrige posibles errores de codificación de caracteres
   private fixEncoding(text: string): string {
     return text
       .replace(/Ã¡/g, 'á')
@@ -63,7 +63,7 @@ export class CrearAsesoria implements OnInit {
       .replace(/Ã/g, 'í');
   }
 
-  // ✅ Busca el asesor en la lista del backend por nombre
+  //  Busca el asesor en la lista del backend por nombre
   private obtenerAsesorLogueado(): void {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -79,7 +79,7 @@ export class CrearAsesoria implements OnInit {
 
     // 🔤 Corrige el nombre decodificado (acentos)
     const nombreToken = this.fixEncoding(payload.sub.trim().toLowerCase());
-    console.log('🧠 Nombre decodificado del token:', nombreToken);
+    console.log(' Nombre decodificado del token:', nombreToken);
 
     this.http.get<any[]>('http://localhost:8080/api/skillink/asesor/listar').subscribe({
       next: (asesores) => {
@@ -89,13 +89,13 @@ export class CrearAsesoria implements OnInit {
 
         if (asesorEncontrado) {
           this.asesorLogueado = asesorEncontrado;
-          console.log('✅ Asesor logueado encontrado:', asesorEncontrado);
+          console.log(' Asesor logueado encontrado:', asesorEncontrado);
         } else {
           alert('No se encontró información del asesor. Verifica el nombre en el token.');
         }
       },
       error: (err) => {
-        console.error('❌ Error al obtener asesores:', err);
+        console.error(' Error al obtener asesores:', err);
         alert('Hubo un error al buscar al asesor.');
       }
     });
@@ -124,27 +124,27 @@ export class CrearAsesoria implements OnInit {
       return;
     }
 
-    // ✅ Creamos el objeto con el asesor incluido
+    //  Creamos el objeto con el asesor incluido
     const asesoriaData = {
       ...this.asesoria,
       costoasesoria: Number(String(this.asesoria.costoasesoria).replace(',', '.')),
       asesor: this.asesorLogueado
     };
 
-    console.log('📦 Datos enviados al backend:', asesoriaData);
+    console.log(' Datos enviados al backend:', asesoriaData);
 
-    // 🔓 Sin headers, ya que el backend permite todas las rutas
+    //  Sin headers, ya que el backend permite todas las rutas
     this.http
       .post('http://localhost:8080/api/skillink/asesoria/registrar', asesoriaData)
       .subscribe({
         next: (asesoriaResponse: any) => {
-          console.log('✅ Asesoría registrada correctamente:', asesoriaResponse);
+          console.log(' Asesoría registrada correctamente:', asesoriaResponse);
 
           alert('Asesoría creada correctamente.');
           this.router.navigate(['/asesor/asesorasesorias']);
         },
         error: (err) => {
-          console.error('❌ Error al registrar la asesoría:', err);
+          console.error(' Error al registrar la asesoría:', err);
           alert('Hubo un error al registrar la asesoría.');
         }
       });
