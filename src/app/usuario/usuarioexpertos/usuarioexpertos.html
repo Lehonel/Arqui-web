@@ -54,17 +54,7 @@
       </div>
 
       <!-- Filtro por Estrellas -->
-      <div class="filtro-grupo">
-        <h4>Calificación</h4>
-        <ul>
-          <li><button (click)="filtrarPorEstrellas(5)">★★★★★ (5)</button></li>
-          <li><button (click)="filtrarPorEstrellas(4)">★★★★☆ (4)</button></li>
-          <li><button (click)="filtrarPorEstrellas(3)">★★★☆☆ (3)</button></li>
-          <li><button (click)="filtrarPorEstrellas(2)">★★☆☆☆ (2)</button></li>
-          <li><button (click)="filtrarPorEstrellas(1)">★☆☆☆☆ (1)</button></li>
-          <li><button (click)="cargarCartillas()">Todos</button></li>
-        </ul>
-      </div>
+
     </aside>
 
     <!-- 🔹 Lista de Expertos -->
@@ -75,9 +65,6 @@
           <h3>{{ c.nombrecartillaasesor }}</h3>
           <p class="especialidad">{{ c.especialcartillaasesor }}</p>
           <p class="descripcion">"{{ c.descripcioncartillaasesor }}"</p>
-          <div class="estrellas">
-            <span *ngFor="let s of getStars(c.estrellascartillaasesor)">{{ s }}</span>
-          </div>
           <button class="btn-perfil" [routerLink]="['/verasesor', c.idcartillaasesor]">Ver Perfil</button>
         </div>
       </div>
