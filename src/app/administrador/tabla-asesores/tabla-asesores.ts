@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AsesorService } from './asesor.service';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-tabla-asesores',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './tabla-asesores.html',
   styleUrls: ['./tabla-asesores.css']
 })
@@ -17,7 +18,14 @@ export class TablaAsesoresComponent implements OnInit {
   constructor(private asesorService: AsesorService) {}
 
   ngOnInit() {
-    this.obtenerAsesores();
+    const ordenGuardado = localStorage.getItem("ordenAsesores");
+
+    if (ordenGuardado) {
+      this.asesores = JSON.parse(ordenGuardado);
+      this.loading = false;
+    } else {
+      this.obtenerAsesores();
+    }
   }
 
   obtenerAsesores(): void {
@@ -103,4 +111,26 @@ export class TablaAsesoresComponent implements OnInit {
       }
     });
   }
+
+  cambiarEstado(id: number, nuevoEstado: boolean): void {
+    this.asesorService.actualizarEstado(id, nuevoEstado).subscribe({
+      next: () => {
+        const asesor = this.asesores.find(a => a.idasesor === id);
+        if (asesor) {
+          asesor.estadoasesor = nuevoEstado;
+        }
+        this.ordenarAsesores(); // <--- aquí lo reacomoda siempre
+      },
+      error: () => alert("Error al actualizar estado")
+    });
+  }
+
+  ordenarAsesores() {
+    this.asesores.sort((a, b) => a.idasesor - b.idasesor);
+    localStorage.setItem("ordenAsesores", JSON.stringify(this.asesores));
+  }
+
+
+
+
 }

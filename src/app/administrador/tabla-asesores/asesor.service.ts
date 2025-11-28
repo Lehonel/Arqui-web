@@ -29,4 +29,9 @@ export class AsesorService {
   listarAsesoresPorEspecialidad(especialidad: string): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/especialidad/${especialidad}`);
   }
+
+  actualizarEstado(id: number, estado: boolean): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/${id}/estado`, estado);
+  }
+
 }

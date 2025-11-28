@@ -8,6 +8,7 @@
     <button class="btn-accion btn-activo" (click)="filtrarPorEstado(true)">Ver Activos</button>
     <button class="btn-accion btn-inactivo" (click)="filtrarPorEstado(false)">Ver Inactivos</button>
     <button class="btn-accion" (click)="cargarClientes()">Mostrar Todos</button>
+    <button class="btn-accion" (click)="ordenarClientes()">Ordenar por ID</button>
   </div>
 
 
@@ -35,9 +36,16 @@
       <td>{{ cliente.correocliente }}</td>
       <td>{{ cliente.telefonocliente }}</td>
       <td>{{ cliente.direccioncliente }}</td>
-      <td [ngClass]="cliente.estadocliente ? 'activo' : 'inactivo'">
-        {{ cliente.estadocliente ? 'Activo' : 'Inactivo' }}
+      <td>
+        <select
+          [ngModel]="cliente.estadocliente"
+          (ngModelChange)="cambiarEstado(cliente.idcliente, $event)"
+        >
+          <option [ngValue]="true">Activo</option>
+          <option [ngValue]="false">Inactivo</option>
+        </select>
       </td>
+
       <td>
         <button class="btn-eliminar" (click)="eliminarCliente(cliente.idcliente)">
           🗑 Eliminar

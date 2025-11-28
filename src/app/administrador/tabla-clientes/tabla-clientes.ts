@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ClienteService } from './clientes.service';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-tabla-clientes',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './tabla-clientes.html',
   styleUrls: ['./tabla-clientes.css']
 })
@@ -18,7 +19,14 @@ export class TablaClientesComponent implements OnInit {
   constructor(private clienteService: ClienteService) {}
 
   ngOnInit(): void {
-    this.cargarClientes();
+    const ordenGuardado = localStorage.getItem("ordenarClientes");
+
+    if (ordenGuardado) {
+      this.clientes = JSON.parse(ordenGuardado);
+      this.loading = false;
+    } else {
+      this.cargarClientes();
+    }
   }
 
   cargarClientes(): void {
@@ -85,4 +93,25 @@ export class TablaClientesComponent implements OnInit {
       }
     });
   }
+
+  cambiarEstado(id: number, nuevoEstado: boolean): void {
+    this.clienteService.actualizarEstado(id, nuevoEstado).subscribe({
+      next: () => {
+        const cliente = this.clientes.find(c => c.idcliente === id);
+        if (cliente) {
+          cliente.estadocliente = nuevoEstado;
+        }
+
+        this.ordenarClientes(); // 🔥 Ordena como en asesores
+      },
+      error: () => alert("Error al actualizar estado")
+    });
+  }
+
+  ordenarClientes(): void {
+    this.clientes.sort((a, b) => a.idcliente - b.idcliente);
+    localStorage.setItem("ordenarClientes", JSON.stringify(this.clientes));
+  }
+
+
 }

@@ -12,6 +12,8 @@
     <button (click)="filtrarPorEspecialidad(esp.value)">Buscar</button>
 
     <button (click)="obtenerAsesores()">Mostrar Todos</button>
+    <button (click)="ordenarAsesores()">Ordenar por ID</button>
+
   </div>
 
   <div *ngIf="loading">Cargando asesores...</div>
@@ -34,8 +36,14 @@
       <td>{{ asesor.nombreasesor }}</td>
       <td>{{ asesor.correoasesor }}</td>
       <td>{{ asesor.especialidadasesor }}</td>
-      <td [ngClass]="asesor.estadoasesor ? 'activo' : 'inactivo'">
-        {{ asesor.estadoasesor ? 'Activo' : 'Inactivo' }}
+      <td>
+        <select
+          [ngModel]="asesor.estadoasesor"
+          (ngModelChange)="cambiarEstado(asesor.idasesor, $event)"
+        >
+          <option [ngValue]="true">Activo</option>
+          <option [ngValue]="false">Inactivo</option>
+        </select>
       </td>
       <td>
         <button class="btn-eliminar" (click)="eliminarAsesor(asesor.idasesor)">

@@ -26,4 +26,9 @@ export class ClienteService {
   listarClientesPorEstado(estado: boolean): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/estado/${estado}`);
   }
+
+  actualizarEstado(id: number, estado: boolean): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/${id}/estado`, estado);
+  }
+
 }
