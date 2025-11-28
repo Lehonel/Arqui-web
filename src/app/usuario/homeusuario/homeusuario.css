@@ -1,244 +1,268 @@
-/* ======== Sección Principal ======== */
-main {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-  padding: 2rem 5%;
-  background-color: #f9fafb;
-}
-
-/* ======== Contenedor Principal ======== */
+/* CONTENEDOR PRINCIPAL */
 .main-container {
+  background: #1d2f47;
+  padding: 70px 0;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 3rem;
-  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .main-container-content {
+  width: 85%;
+  max-width: 1400px;
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
-  width: 100%;
-}
-
-.image-container {
-  flex: 1 1 45%;
-}
-
-.image-container img {
-  width: 100%;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  object-fit: cover;
-}
-
-.content-container {
-  flex: 1 1 45%;
-  display: flex;
-  justify-content: center;
   align-items: center;
+  gap: 60px;
 }
 
-.card-content {
-  background-color: #ffffff;
+/* IMAGEN */
+.image-container img {
+  width: 650px;
+  height: auto;
+  object-fit: cover;
   border-radius: 16px;
-  padding: 2rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
+/* TEXTO */
+.content-container {
+  width: 50%;
+  color: white;
+}
+
+/* TÍTULOS */
 .card-content-title h1 {
-  font-size: 2rem;
-  color: #1a202c;
-  margin-bottom: 1rem;
+  font-size: 48px;
+  line-height: 1.2;
+  margin-bottom: 20px;
 }
 
 .card-content-title h2 {
-  font-size: 1.1rem;
+  font-size: 20px;
   font-weight: 400;
-  color: #4a5568;
-  margin-bottom: 1.5rem;
+  line-height: 1.5;
 }
 
+/* LISTA DE BULLETS */
 .card-content-description {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-  color: #2d3748;
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 12px;
+  font-size: 18px;
 }
 
+/* BOTÓN */
 .card-content-button {
-  text-align: center;
+  margin-top: 40px;
 }
 
 .card-content-button-action {
-  background-color: #2563eb;
+  padding: 18px 55px;
+  background: #2d4c72;
+  border-radius: 12px;
   color: white;
-  font-weight: 500;
-  padding: 0.8rem 1.5rem;
   border: none;
-  border-radius: 8px;
+  font-size: 18px;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: 0.25s ease;
 }
 
 .card-content-button-action:hover {
-  background-color: #1d4ed8;
+  background: #3d608d;
 }
 
-/* ======== Expertos Recomendados ======== */
+/* ─────────────────────────────── */
+/* EXPERTOS RECOMENDADOS — NUEVO   */
+/* ─────────────────────────────── */
+
 .recommended-experts {
+  width: 100%;
+  padding: 50px 0;
+  background: #f5f5f5;
+}
+
+.recommended-experts-container {
+  width: 85%;
+  max-width: 1400px;
+  margin: 0 auto;
   text-align: center;
 }
 
-.recommended-experts h2 {
-  font-size: 1.8rem;
-  color: #1a202c;
-  margin-bottom: 2rem;
+.recommended-experts-container h2 {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 45px;
 }
 
+/* CONTENEDOR DE LAS 4 TARJETAS */
 .recommended-experts-container-cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-}
-
-.card {
-  background-color: white;
-  border-radius: 12px;
-  width: 260px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transition: 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-}
-
-.card-image img {
   width: 100%;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-  height: 180px;
+  display: flex;
+  justify-content: center;
+}
+
+.expert-card-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 35px;
+}
+
+/* TARJETA */
+.card {
+  background: white;
+  width: 23%;
+  border-radius: 22px;
+  padding: 40px 28px;
+  text-align: center;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* FOTO */
+.card-image img {
+  width: 140px;
+  height: 140px;
+  border-radius: 100%;
   object-fit: cover;
+  margin-bottom: 22px;
 }
 
-.card-expert-info {
-  padding: 1rem;
-  text-align: left;
-}
-
+/* NOMBRE */
 .card-expert-info-name {
   display: block;
-  font-weight: 600;
-  color: #111827;
-  font-size: 1.1rem;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  line-height: 1.3;
+  letter-spacing: 0.3px;
 }
 
+/* PROFESIÓN (ARREGLADO) */
 .card-expert-info-profession {
   display: block;
-  color: #4b5563;
-  margin-bottom: 0.5rem;
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+  line-height: 1.4;
+  letter-spacing: 0.2px;
 }
 
+/* QUOTE */
 .card-expert-info-quote {
+  background: #eae6da;
+  padding: 18px 22px;
+  border-radius: 12px;
+  font-size: 15px;
+  color: #444;
+  margin-bottom: 25px;
   display: block;
-  font-style: italic;
-  font-size: 0.9rem;
-  color: #6b7280;
-  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+/* ESTRELLAS */
+.star-container {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 30px;
 }
 
 .star-container img {
-  width: 18px;
+  width: 23px;
+  height: 23px;
 }
 
-.card-expert-button {
-  text-align: center;
-  padding: 1rem;
-}
-
+/* BOTÓN */
 .card-expert-button-action {
-  background-color: #2563eb;
+  background: #0e2345;
   color: white;
-  font-weight: 500;
-  padding: 0.6rem 1.2rem;
-  border-radius: 8px;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-size: 16px;
   text-decoration: none;
-  transition: background-color 0.3s ease;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+  transition: 0.25s ease;
 }
 
 .card-expert-button-action:hover {
-  background-color: #1d4ed8;
+  background: #18345f;
 }
 
-/* ======== Categorías ======== */
+/* ─────────────────────────────── */
+/* CATEGORIES — ¿Qué asesorías?   */
+/* ─────────────────────────────── */
+
+.categories {
+  width: 100%;
+  padding: 80px 0;
+  background: linear-gradient(180deg, #0d1e33, #1a2f4b);
+  color: white;
+}
+
 .categories-container {
+  width: 85%;
+  max-width: 1400px;
+  margin: 0 auto;
   text-align: center;
 }
 
 .categories-container h2 {
-  font-size: 1.8rem;
-  color: #1a202c;
-  margin-bottom: 2rem;
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 50px;
 }
 
+/* CONTENEDOR DE LAS 3 TARJETAS */
 .categories-container-cards {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 45px;
+  width: 100%;
 }
 
+/* TARJETA INDIVIDUAL */
 .category-card {
-  background-color: white;
-  border-radius: 12px;
-  width: 280px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  background: #14263b;
+  width: 32%;
+  border-radius: 20px;
   overflow: hidden;
-  transition: transform 0.3s ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  transition: 0.25s ease;
 }
 
 .category-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
 }
 
+/* IMAGEN SUPERIOR */
 .category-head-image {
   width: 100%;
-  height: 180px;
+  height: 310px;
   object-fit: cover;
+  display: block;
+}
+
+/* TÍTULO */
+.category-card-title {
+  padding: 25px 20px 10px;
 }
 
 .category-card-title h3 {
-  margin: 1rem 0 0.5rem;
-  font-size: 1.2rem;
-  color: #1e3a8a;
+  font-size: 26px;
+  font-weight: 700;
 }
 
+/* DESCRIPCIÓN */
 .category-card-description {
-  padding: 0 1rem 1.5rem;
-  font-size: 0.95rem;
-  color: #4b5563;
+  padding: 0 25px 30px;
 }
 
-/* ======== Responsividad ======== */
-@media (max-width: 768px) {
-  .main-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .image-container,
-  .content-container {
-    flex: 1 1 100%;
-  }
-
-  .recommended-experts-container-cards,
-  .categories-container-cards {
-    flex-direction: column;
-    align-items: center;
-  }
+.category-card-description p {
+  font-size: 17px;
+  line-height: 1.5;
+  color: #e3e6ea;
 }
