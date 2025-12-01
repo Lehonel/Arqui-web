@@ -18,8 +18,8 @@
       <div class="image-box">
         <img
           class="asesoria-img"
-          [src]="'http://localhost:8080/' + v.asesoria.urlimg"
-          alt="Imagen de la asesoría"
+          [src]="v.asesoria.urlimg"
+          [alt]="v.asesoria.nombreasesoria"
         />
       </div>
 
@@ -54,7 +54,6 @@
               <strong>{{ r.cliente.nombrecliente }}</strong>
               <p class="card-estrellas">
                 <ng-container *ngFor="let _ of getArray(r.puntajeresenha)">
-                  ⭐
                 </ng-container> {{r.puntajeresenha}}
               </p>
             </div>
