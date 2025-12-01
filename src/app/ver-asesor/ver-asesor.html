@@ -16,11 +16,8 @@
 
       <!-- IMAGEN PRINCIPAL -->
       <div class="image-box">
-        <img
-          class="asesoria-img"
-          [src]="v.urlcartillaasesor || defaultImg"
-          alt="Foto del asesor"
-        />
+        <img [src]="v.urlcartillaasesor?.startsWith('http') ? v.urlcartillaasesor : 'http://localhost:8080/' + v.urlcartillaasesor" [alt]="v.nombrecartillaasesor" class="asesoria-img">
+
       </div>
 
       <!-- DESCRIPCIÓN -->

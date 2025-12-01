@@ -16,11 +16,7 @@
 
       <!-- IMAGEN PRINCIPAL -->
       <div class="image-box">
-        <img
-          class="asesoria-img"
-          [src]="v.asesoria.urlimg"
-          [alt]="v.asesoria.nombreasesoria"
-        />
+        <img [src]="v.asesoria.urlimg?.startsWith('http') ? v.asesoria.urlimg : 'http://localhost:8080/' + v.asesoria.urlimg" [alt]="v.asesoria.nombreasesoria" class="asesoria-img">
       </div>
 
       <!-- DESCRIPCIÓN -->

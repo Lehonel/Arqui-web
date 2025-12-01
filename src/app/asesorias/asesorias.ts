@@ -118,4 +118,14 @@ export class Asesorias implements AfterViewInit, OnInit {
     // Ajusta carrusel al redimensionar la ventana
     window.addEventListener('resize', () => this.updateCardsPerView());
   }
+// asesorias.component.ts
+  getImagenUrl(asesoria: any): string {
+    if (asesoria.urlimg.startsWith('http')) {
+      // Si ya es URL completa
+      return asesoria.urlimg;
+    } else {
+      // Si es un archivo local, asumimos que está en assets
+      return 'assets/images/' + asesoria.urlimg;
+    }
+  }
 }
