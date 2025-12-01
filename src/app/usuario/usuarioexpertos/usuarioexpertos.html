@@ -60,7 +60,7 @@
     <!-- 🔹 Lista de Expertos -->
     <section class="lista-expertos">
       <div *ngFor="let c of cartillasFiltradas" class="tarjeta-experto">
-        <img [src]="getImagenUrl(c.urlcartillaasesor)" [alt]="c.nombrecartillaasesor" class="imagen-experto" />
+        <img [src]="c.urlcartillaasesor" [alt]="c.nombrecartillaasesor" class="imagen-experto" />
         <div class="info-experto">
           <h3>{{ c.nombrecartillaasesor }}</h3>
           <p class="especialidad">{{ c.especialcartillaasesor }}</p>

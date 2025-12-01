@@ -18,7 +18,7 @@
           <div class="carousel-content" [style.transform]="getCarouselTransform()">
             <div class="asesoria-card" *ngFor="let asesoria of asesoriasRecomendadas">
               <div class="card-image">
-                <img [src]="'http://localhost:8080/' + asesoria.urlimg" [alt]="asesoria.nombreasesoria">
+                <img [src]="asesoria.urlimg" [alt]="asesoria.nombreasesoria">
               </div>
               <div class="asesoria-card-content">
                 <h3>{{ asesoria.nombreasesoria }}</h3>
@@ -71,7 +71,7 @@
       <div class="asesorias-catalog">
         <div class="asesoria-card" *ngFor="let asesoria of asesoriasFiltradas">
           <div class="card-image">
-            <img [src]="'http://localhost:8080/' + asesoria.urlimg" [alt]="asesoria.nombreasesoria">
+            <img [src]="asesoria.urlimg" [alt]="asesoria.nombreasesoria">
           </div>
           <div class="asesoria-card-content">
             <h3>{{ asesoria.nombreasesoria }}</h3>
