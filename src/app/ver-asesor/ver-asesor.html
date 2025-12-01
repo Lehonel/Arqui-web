@@ -16,7 +16,7 @@
 
       <!-- IMAGEN PRINCIPAL -->
       <div class="image-box">
-        <img [src]="v.urlcartillaasesor?.startsWith('http') ? v.urlcartillaasesor : 'http://localhost:8080/' + v.urlcartillaasesor" [alt]="v.nombrecartillaasesor" class="asesoria-img">
+        <img [src]="v.urlcartillaasesor.startsWith('http') ? v.urlcartillaasesor : 'http://localhost:8080/' + v.urlcartillaasesor" [alt]="v.nombrecartillaasesor" class="asesoria-img">
 
       </div>
 

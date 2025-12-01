@@ -42,7 +42,7 @@
       <td>{{ asesoria.idcliente }}</td>
       <td>{{ asesoria.asesor?.idasesor }}</td>
       <td>
-        <img [src]="asesoria.urlimg?.startsWith('http') ? asesoria.urlimg : 'http://localhost:8080/' + asesoria.urlimg" [alt]="asesoria.nombreasesoria">
+        <img [src]="asesoria.urlimg.startsWith('http') ? asesoria.urlimg : 'http://localhost:8080/' + asesoria.urlimg" [alt]="asesoria.nombreasesoria">
       </td>
       <td>
         <button class="btn-eliminar" (click)="eliminarAsesoria(asesoria.idasesoria)">🗑 Eliminar</button>
