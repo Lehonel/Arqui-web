@@ -76,7 +76,7 @@ export class VerAsesoriaService {
 
   listarPorId(id: number): Observable<VerAsesoriaDTO> {
     return this.http.get<VerAsesoriaDTO>(
-      `${this.apiURL}/listarverasesoria/${id}`
+      `${this.apiURL}/asesoria/${id}`
     );
   }
 }
